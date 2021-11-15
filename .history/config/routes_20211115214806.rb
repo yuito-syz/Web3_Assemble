@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get 'comments/:id/destroy' => 'comments#destroy'
-  post 'comments/:id/create' => 'comments#create'
+  get 'comments/:id/destroy' to: 'comments#destroy'
+  post 'comments/:id/create' to: 'comments#create'
   
   resources :users do
     member do
