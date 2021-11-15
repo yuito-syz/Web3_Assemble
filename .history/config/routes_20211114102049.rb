@@ -7,15 +7,9 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get 'comments/:id/destroy' => 'comments#destroy'
-  post 'comments/:id/create' => 'comments#create'
-  
   resources :users do
     member do
       get :following, :followers
-    end
-    resources :microposts, only: %i[index show create] do
-      resources :comments, only: [:create]
     end
   end
   resources :account_activations, only: [:edit]
