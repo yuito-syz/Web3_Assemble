@@ -1,6 +1,6 @@
 # テーマ：様々なサービスの予約・解約・契約に関するクチコミ投稿サイト
-RoR Tutorialのサンプルアプリケーションの拡張とオリジナル機能を実装予定です
-ベース：sample_appRuby on Rails Tutotial
+- RoR Tutorialのサンプルアプリケーションの拡張とオリジナル機能を実装予定です
+- ベース：sample_app(Ruby on Rails Tutotial)
 
 [*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
 （第6版）
