@@ -1,0 +1,6 @@
+<%= form_with model: @post, local: true do |f| %>%
+  <%= f.text_area :content, rows: 5 %>
+  <div>
+  <%= f.submit %>
+  </div>
+<% end %>
