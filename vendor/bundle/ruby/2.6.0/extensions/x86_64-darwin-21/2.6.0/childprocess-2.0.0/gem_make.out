@@ -1,0 +1,7 @@
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/childprocess-2.0.0/ext
+/Users/nemuson/.rbenv/versions/2.6.3/bin/ruby mkrf_conf.rb
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/childprocess-2.0.0/ext
+/Users/nemuson/.rbenv/versions/2.6.3/bin/ruby -rrubygems /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/rake-12.3.3/exe/rake RUBYARCHDIR\=/Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/extensions/x86_64-darwin-21/2.6.0/childprocess-2.0.0 RUBYLIBDIR\=/Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/extensions/x86_64-darwin-21/2.6.0/childprocess-2.0.0
+Ignoring pg-1.1.4 because its extensions are not built. Try: gem pristine pg --version 1.1.4
+Ignoring puma-4.3.6 because its extensions are not built. Try: gem pristine puma --version 4.3.6
