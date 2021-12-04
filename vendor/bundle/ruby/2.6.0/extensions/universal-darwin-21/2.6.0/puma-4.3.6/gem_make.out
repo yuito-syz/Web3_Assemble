@@ -1,5 +1,5 @@
 current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/puma-4.3.6/ext/puma_http11
-/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20211118-15534-fsh7wo.rb extconf.rb
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20211204-490-mqy29x.rb extconf.rb
 checking for BIO_read() in -lcrypto... no
 checking for BIO_read() in -llibeay32... no
 creating Makefile
@@ -19,4 +19,4 @@ ld: warning: directory not found for option '-L/System/Volumes/Data/SWE/macOS/Bu
 
 current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/puma-4.3.6/ext/puma_http11
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20211118-15534-lg3zm1/puma
+/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20211204-490-101i40z/puma

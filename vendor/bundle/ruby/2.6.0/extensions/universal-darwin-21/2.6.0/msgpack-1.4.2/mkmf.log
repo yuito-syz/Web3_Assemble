@@ -122,7 +122,7 @@ checked program was:
 ld: warning: directory not found for option '-L/System/Volumes/Data/SWE/macOS/BuildRoots/b8ff8433dc/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.Internal.sdk/usr/local/lib'
 Undefined symbols for architecture x86_64:
   "_rb_enc_interned_str", referenced from:
-      _t in conftest-dc871f.o
+      _t in conftest-20b119.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 checked program was:

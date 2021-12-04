@@ -1,3 +1,5 @@
 current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/mimemagic-0.3.10/ext/mimemagic
 /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -rrubygems /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/rake-12.3.3/exe/rake RUBYARCHDIR\=/Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/extensions/universal-darwin-21/2.6.0/mimemagic-0.3.10 RUBYLIBDIR\=/Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/extensions/universal-darwin-21/2.6.0/mimemagic-0.3.10
+Ignoring bootsnap-1.4.5 because its extensions are not built. Try: gem pristine bootsnap --version 1.4.5
+Ignoring mimemagic-0.3.10 because its extensions are not built. Try: gem pristine mimemagic --version 0.3.10
 mkdir -p /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/extensions/universal-darwin-21/2.6.0/mimemagic-0.3.10/mimemagic
