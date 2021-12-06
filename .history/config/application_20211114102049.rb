@@ -18,14 +18,5 @@ module SampleApp
     
     # 認証トークンをremoteフォームに埋め込む
     config.action_view.embed_authenticity_token_in_remote_forms = true
-
-    config.generators do |generator|
-      generator.test_framework :rspec,
-                       fixtures: true,
-               controller_specs: true,
-                   helper_specs: false,
-                  routing_specs: false
-      generator.fixture_replacement :factory_bot, dir: "spec/factories"
-    end
   end
 end
