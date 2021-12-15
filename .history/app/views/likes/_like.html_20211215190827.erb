@@ -1,0 +1,8 @@
+<div class="like_button_on">
+    <%= link_to "いいね済み", likes_delete_path(food_id: @food.id), {method: "post", remote: true} %>
+    <%= @like_count %>
+</div>
+<div class="like_button">
+    <%= link_to "いいね", likes_create_path(food_id: @food.id), {method: "post", remote: true} %>
+    <%= @like_count %>
+</div>
