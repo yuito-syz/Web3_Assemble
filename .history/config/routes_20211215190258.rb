@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'comments/:id/destroy' => 'comments#destroy'
   post 'comments/:id/create' => 'comments#create'
   post "likes/:micropost_id/create", to: "likes#create", constraints: {micropost_id: /\d+/}, as: :likes_create
-  post "likes/:micropost_id/delete", to: "likes#delete", constraints: {micropost_id: /\d+/}, as: :likes_delete
+post "likes/:food_id/delete", to: "likes#delete", constraints: {micropost_id: /\d+/}, as: :likes_delete
   
   resources :users do
     get :search, on: :collection
