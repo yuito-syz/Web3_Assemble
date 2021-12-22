@@ -1,0 +1,9 @@
+<% if @feed_items.any? %>
+  <ol class="microposts">
+    <%= render @feed_items %>
+  </ol>
+  <%= will_paginate @feed_items,
+                    params: { controller: :static_pages, action: :home }  %>
+   <%# ボタンを押すと「いいね」の作成・削除が行われ、その都度指定したdivの中身が書き換えられます。 %>
+  <div class="buttons_<%= @micropost.id %>"><%= render partial: 'likes/like' %></div>
+<% end %>
