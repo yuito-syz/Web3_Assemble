@@ -13,17 +13,14 @@
             </div>
             <% if comment.user_id == @current_user.id %>
             <div class="post-menus">
-
                 <%= link_to("削除", "/comments/#{@micropost.id}/destroy", {method: "micropost"}) %>
             </div>
             <% end %>
-            <% end %>
+        <% end %>
         </div>
         <%= form_tag("/comments/:micropost_id/create") do %>
         <div class="form">
             <div class="form-body">
-
-
                 <textarea name="content"><%= @comment.content %></textarea>
                 <input type="submit" value="コメントする">
 

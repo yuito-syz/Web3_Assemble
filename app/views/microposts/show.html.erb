@@ -13,8 +13,6 @@
             </div>
             <% if comment.user_id == @current_user.id %>
             <div class="post-menus">
-                <%# ボタンを押すと「いいね」の作成・削除が行われ、その都度指定したdivの中身が書き換えられます。 %>
-                <div class="buttons_<%= @micropost.id %>"><%= render partial: 'likes/like' %></div>
                 <%= link_to("削除", "/comments/#{@micropost.id}/destroy", {method: "micropost"}) %>
             </div>
             <% end %>
@@ -23,8 +21,6 @@
         <%= form_tag("/comments/:micropost_id/create") do %>
         <div class="form">
             <div class="form-body">
-
-
                 <textarea name="content"><%= @comment.content %></textarea>
                 <input type="submit" value="コメントする">
 
