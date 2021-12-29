@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
+・・・
   describe "POST /users" do
     let(:user) { FactoryBot.attributes_for(:user) }  #<= attributes_forはハッシュの形で返してくれる。
     it "adds new user with correct signup information" do

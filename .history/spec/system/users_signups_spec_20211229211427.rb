@@ -23,7 +23,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in 'Confirmation', with: 'password'
     click_on 'Create my account'
     aggregate_failures do
-      expect(current_path).to eq user_path(User.find_by(email: "user@example.com"))
+      expect(current_path).to eq user_path(User.new)
       expect(has_css?('.alert-success')).to be_truthy
       visit current_path # <= 再読み込みを再現しています。
       expect(has_css?('.alert-success')).to be_falsy
