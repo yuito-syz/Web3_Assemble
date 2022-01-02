@@ -300,7 +300,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.4.1)
   bootstrap-will_paginate (= 1.0.0)
   byebug (= 11.0.1)
-  capybara (~> 3.36)
+  capybara
   counter_culture (~> 2.0)
   factory_bot_rails
   faker (= 2.1.2)

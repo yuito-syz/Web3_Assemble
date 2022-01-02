@@ -7,7 +7,8 @@ RSpec.describe "Staticpages", type: :request do
     it "returns http success" do
       get "/"
       expect(response).to have_http_status(:success)
-      expect(response.body).to include "Home | #{base_title}"
+      expect(response.body).to include base_title
+      expect(response.body).not_to include "| #{base_title}"
     end
   end
 
@@ -18,22 +19,11 @@ RSpec.describe "Staticpages", type: :request do
       expect(response.body).to include "Help | #{base_title}"
     end
   end
-
   describe "GET /about" do
     it "returns http success" do
       get "/about"
       expect(response).to have_http_status(:success)
-      expect(response.body).to include "About | #{base_title}"
-    end
-  end
-
-  describe "GET /contact" do
-    it "returns http success" do
-      get "/contact"
-      aggregate_failures do
-        expect(response).to have_http_status(:success)
-        expect(response.body).to include "Contact | #{base_title}"
-      end
+      expect(response.body).to include "About | Ruby on Rails Tutorial"
     end
   end
 end
