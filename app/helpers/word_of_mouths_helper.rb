@@ -1,0 +1,2 @@
+module WordOfMouthsHelper
+end
