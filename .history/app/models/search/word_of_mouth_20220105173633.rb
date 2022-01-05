@@ -1,0 +1,2 @@
+class WordOfMouth < ApplicationRecord
+end
