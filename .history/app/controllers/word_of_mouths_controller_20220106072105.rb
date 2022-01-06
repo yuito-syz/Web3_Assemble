@@ -18,6 +18,6 @@ class WordOfMouthsController < ApplicationController
   def search_params
     params
       .require(:search_product)
-      .permit(Search::WordOfMouth::ATTRIBUTES)
+      .permit(Search::Product::ATTRIBUTES)
   end
 end
