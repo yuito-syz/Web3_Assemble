@@ -64,4 +64,6 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # module読み込み
   config.include LoginModule
+  Capybara.javascript_driver = :poltergeist
+  Capybara.server = :puma
 end
