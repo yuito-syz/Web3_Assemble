@@ -17,7 +17,8 @@ class WordOfMouthsController < ApplicationController
   # 検索フォームから受け取ったパラメータ
   def search_params
     search_conditions = %i(
-      name_cont
+      code_cont name_cont name_kana_cont availability_true
+      price_gteq price_lteq purchase_cost_gteq purchase_cost_lteq
     )
     params.require(:q).permit(search_conditions)
   end

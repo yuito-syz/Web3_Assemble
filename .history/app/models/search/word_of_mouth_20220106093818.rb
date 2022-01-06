@@ -1,4 +1,4 @@
-class Search::WordOfMouth < Search::Base
+class Search::WordOfMounth < Search::Base
     ATTRIBUTES = %i(
       name
     )
