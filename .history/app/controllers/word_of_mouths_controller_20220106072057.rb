@@ -6,7 +6,7 @@ class WordOfMouthsController < ApplicationController
 
   def search
     @word_of_mouth = Search::WordOfMouth.new(search_params)
-    @word_of_mouths = @word_of_mouth
+    @products = @product
       .matches
       .order(availability: :desc, code: :asc)
       .decorate
@@ -18,6 +18,6 @@ class WordOfMouthsController < ApplicationController
   def search_params
     params
       .require(:search_product)
-      .permit(Search::WordOfMouth::ATTRIBUTES)
+      .permit(Search::Product::ATTRIBUTES)
   end
 end
