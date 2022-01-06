@@ -5,9 +5,9 @@ class WordOfMouthsController < ApplicationController
   end
 
   def search
-    @q = WordOfMouth.search(search_params)
-    @word_of_mouths = @q
-      .result
+    @word_of_mouth = Search::WordOfMouth.new(search_params)
+    @word_of_mouths = @word_of_mouth
+      .matches
       .order(availability: :desc, code: :asc)
       .decorate
   end
@@ -16,9 +16,8 @@ class WordOfMouthsController < ApplicationController
 
   # 検索フォームから受け取ったパラメータ
   def search_params
-    search_conditions = %i(
-      name_cont
-    )
-    params.require(:q).permit(search_conditions)
+    params
+      .require(:search_product)
+      .permit(Search::WordOfMouth::ATTRIBUTES)
   end
 end
