@@ -21,17 +21,17 @@ RSpec.describe "UsersLogins", type: :system do
         fill_in 'Email',    with: user.email
         fill_in 'Password', with: user.password
         click_button 'Log in'
+        click_link 'Account'
         aggregate_failures do
           expect(current_path).to eq root_path
-          click_on 'Account'
           expect(page).to have_link 'Log in'
           expect(page).to have_link 'Log out', href: logout_path
-          expect(page).to have_link 'Profile', href: user_path(user)
+          expect(page).to have_no_link 'Profile', href: user_path(user)
         end
-        click_on 'Log out'
+        click_button 'Log out'
         aggregate_failures do
           expect(current_path).to eq root_path
-          expect(page).to have_link 'Log in', href: login_path
+          expect(page).to have_no_link 'Log in', href: login_path
           expect(page).to have_no_link 'Log out'
           expect(page).to have_no_link 'Profile'
         end
