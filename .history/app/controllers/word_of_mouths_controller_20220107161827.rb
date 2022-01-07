@@ -7,7 +7,7 @@ class WordOfMouthsController < ApplicationController
     @q = WordOfMouth.search(search_params)
     @word_of_mouths = @q
       .result
-      .order
+      .order(availability: :desc, code: :asc)
       .decorate
   end
 
