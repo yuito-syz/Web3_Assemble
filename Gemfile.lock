@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 49a43fc9519408e47a4844d3cdbeb2838687041a
+  specs:
+    ransack (2.5.0)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -300,7 +309,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.4.1)
   bootstrap-will_paginate (= 1.0.0)
   byebug (= 11.0.1)
-  capybara (~> 3.36)
+  capybara
   counter_culture (~> 2.0)
   factory_bot_rails
   faker (= 2.1.2)
@@ -317,6 +326,7 @@ DEPENDENCIES
   puma (= 4.3.6)
   rails (= 6.0.3)
   rails-controller-testing (= 1.0.4)
+  ransack!
   rspec-rails (~> 5.0.0)
   sass-rails (= 5.1.0)
   selenium-webdriver (= 3.142.4)

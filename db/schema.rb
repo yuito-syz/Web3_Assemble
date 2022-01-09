@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_22_070116) do
+ActiveRecord::Schema.define(version: 2022_01_05_083058) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -76,6 +76,11 @@ ActiveRecord::Schema.define(version: 2021_12_22_070116) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "searches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -90,6 +95,11 @@ ActiveRecord::Schema.define(version: 2021_12_22_070116) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "word_of_mouths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

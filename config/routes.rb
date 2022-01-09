@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :searches
+  resources :word_of_mouths
   resources :post
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
