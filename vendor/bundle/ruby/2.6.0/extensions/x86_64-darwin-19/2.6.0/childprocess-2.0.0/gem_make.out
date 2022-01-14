@@ -1,0 +1,19 @@
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/childprocess-2.0.0/ext
+/Users/nemuson/.rbenv/versions/2.6.0/bin/ruby mkrf_conf.rb
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/childprocess-2.0.0/ext
+/Users/nemuson/.rbenv/versions/2.6.0/bin/ruby -I/Users/nemuson/.rbenv/versions/2.6.0/lib/ruby/site_ruby/2.6.0 -rrubygems /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/rake-12.3.3/exe/rake RUBYARCHDIR\=/Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/extensions/x86_64-darwin-19/2.6.0/childprocess-2.0.0 RUBYLIBDIR\=/Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/extensions/x86_64-darwin-19/2.6.0/childprocess-2.0.0
+Ignoring bcrypt-3.1.16 because its extensions are not built. Try: gem pristine bcrypt --version 3.1.16
+Ignoring bootsnap-1.4.5 because its extensions are not built. Try: gem pristine bootsnap --version 1.4.5
+Ignoring byebug-11.0.1 because its extensions are not built. Try: gem pristine byebug --version 11.0.1
+Ignoring childprocess-2.0.0 because its extensions are not built. Try: gem pristine childprocess --version 2.0.0
+Ignoring ffi-1.15.4 because its extensions are not built. Try: gem pristine ffi --version 1.15.4
+Ignoring kgio-2.11.4 because its extensions are not built. Try: gem pristine kgio --version 2.11.4
+Ignoring mimemagic-0.3.10 because its extensions are not built. Try: gem pristine mimemagic --version 0.3.10
+Ignoring msgpack-1.4.2 because its extensions are not built. Try: gem pristine msgpack --version 1.4.2
+Ignoring mysql2-0.5.3 because its extensions are not built. Try: gem pristine mysql2 --version 0.5.3
+Ignoring nio4r-2.5.8 because its extensions are not built. Try: gem pristine nio4r --version 2.5.8
+Ignoring pg-1.1.4 because its extensions are not built. Try: gem pristine pg --version 1.1.4
+Ignoring puma-4.3.6 because its extensions are not built. Try: gem pristine puma --version 4.3.6
+Ignoring racc-1.6.0 because its extensions are not built. Try: gem pristine racc --version 1.6.0
+Ignoring raindrops-0.20.0 because its extensions are not built. Try: gem pristine raindrops --version 0.20.0

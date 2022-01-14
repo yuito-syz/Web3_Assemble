@@ -1,0 +1,147 @@
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/raindrops-0.20.0/ext/raindrops
+/Users/nemuson/.rbenv/versions/2.6.0/bin/ruby -I /Users/nemuson/.rbenv/versions/2.6.0/lib/ruby/site_ruby/2.6.0 -r ./siteconf20220114-70586-1tzea1d.rb extconf.rb
+checking for mmap() in sys/mman.h... yes
+checking for munmap() in sys/mman.h... yes
+checking for mremap() in sys/mman.h... no
+checking for linux/tcp.h... no
+checking for netinet/tcp.h... yes
+checking for netinet/tcp_fsm.h... yes
+checking for struct tcp_info in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,netinet/tcp.h,netinet/tcp_fsm.h... no
+checking for getpagesize() in unistd.h... yes
+checking for rb_thread_call_without_gvl()... yes
+checking for rb_thread_blocking_region()... no
+checking for rb_thread_io_blocking_region()... yes
+checking for GCC 4+ atomic builtins... yes
+creating extconf.h
+creating Makefile
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/raindrops-0.20.0/ext/raindrops
+make DESTDIR\= clean
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/raindrops-0.20.0/ext/raindrops
+make DESTDIR\=
+compiling linux_inet_diag.c
+In file included from linux_inet_diag.c:4:
+./my_fileno.h:23:12: warning: unused function 'my_fileno' [-Wunused-function]
+static int my_fileno(VALUE io)
+           ^
+1 warning generated.
+compiling raindrops.c
+raindrops.c:123:38: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+                int fd = NUM2INT(rb_funcall(r->io, rb_intern("fileno"), 0));
+                                                   ^~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2602:20: note: expanded from macro 'rb_funcall'
+        rb_funcallv(recv, mid, \
+                          ^~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:714:32: note: expanded from macro 'NUM2INT'
+#define NUM2INT(x)  RB_NUM2INT(x)
+                               ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:702:41: note: expanded from macro 'RB_NUM2INT'
+#define RB_NUM2INT(x) rb_num2int_inline(x)
+                                        ^
+raindrops.c:123:38: note: '{' token is here
+                int fd = NUM2INT(rb_funcall(r->io, rb_intern("fileno"), 0));
+                                                   ^~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1811:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2602:20: note: expanded from macro 'rb_funcall'
+        rb_funcallv(recv, mid, \
+                          ^~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:714:32: note: expanded from macro 'NUM2INT'
+#define NUM2INT(x)  RB_NUM2INT(x)
+                               ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:702:41: note: expanded from macro 'RB_NUM2INT'
+#define RB_NUM2INT(x) rb_num2int_inline(x)
+                                        ^
+raindrops.c:123:38: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+                int fd = NUM2INT(rb_funcall(r->io, rb_intern("fileno"), 0));
+                                                   ^~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1816:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2602:20: note: expanded from macro 'rb_funcall'
+        rb_funcallv(recv, mid, \
+                          ^~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:714:32: note: expanded from macro 'NUM2INT'
+#define NUM2INT(x)  RB_NUM2INT(x)
+                               ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:702:41: note: expanded from macro 'RB_NUM2INT'
+#define RB_NUM2INT(x) rb_num2int_inline(x)
+                                        ^
+raindrops.c:123:38: note: ')' token is here
+                int fd = NUM2INT(rb_funcall(r->io, rb_intern("fileno"), 0));
+                                                   ^~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2602:20: note: expanded from macro 'rb_funcall'
+        rb_funcallv(recv, mid, \
+                          ^~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:714:32: note: expanded from macro 'NUM2INT'
+#define NUM2INT(x)  RB_NUM2INT(x)
+                               ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:702:41: note: expanded from macro 'RB_NUM2INT'
+#define RB_NUM2INT(x) rb_num2int_inline(x)
+                                        ^
+raindrops.c:124:21: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+                rb_funcall(r->io, rb_intern("truncate"), 1, SIZET2NUM(tmp));
+                                  ^~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2602:20: note: expanded from macro 'rb_funcall'
+        rb_funcallv(recv, mid, \
+                          ^~~
+raindrops.c:124:21: note: '{' token is here
+                rb_funcall(r->io, rb_intern("truncate"), 1, SIZET2NUM(tmp));
+                                  ^~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1811:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2602:20: note: expanded from macro 'rb_funcall'
+        rb_funcallv(recv, mid, \
+                          ^~~
+raindrops.c:124:21: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+                rb_funcall(r->io, rb_intern("truncate"), 1, SIZET2NUM(tmp));
+                                  ^~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1816:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2602:20: note: expanded from macro 'rb_funcall'
+        rb_funcallv(recv, mid, \
+                          ^~~
+raindrops.c:124:21: note: ')' token is here
+                rb_funcall(r->io, rb_intern("truncate"), 1, SIZET2NUM(tmp));
+                                  ^~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:2602:20: note: expanded from macro 'rb_funcall'
+        rb_funcallv(recv, mid, \
+                          ^~~
+raindrops.c:194:1: warning: function 'resize' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+5 warnings generated.
+compiling tcp_info.c
+linking shared-object raindrops_ext.bundle
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/raindrops-0.20.0/ext/raindrops
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 raindrops_ext.bundle ./.gem.20220114-70586-ic0dhe

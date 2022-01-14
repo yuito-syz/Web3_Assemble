@@ -1,0 +1,123 @@
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/unicorn-5.8.0/ext/unicorn_http
+/Users/nemuson/.rbenv/versions/2.6.0/bin/ruby -I /Users/nemuson/.rbenv/versions/2.6.0/lib/ruby/site_ruby/2.6.0 -r ./siteconf20220114-76940-yah3gc.rb extconf.rb
+checking for SIZEOF_OFF_T in ruby.h... yes
+checking for SIZEOF_SIZE_T in ruby.h... yes
+checking for SIZEOF_LONG in ruby.h... yes
+checking for rb_str_set_len() in ruby.h... yes
+checking for rb_hash_clear() in ruby.h... yes
+checking for gmtime_r() in time.h... yes
+checking if String#-@ (str_uminus) dedupes... yes
+checking if Hash#[]= (rb_hash_aset) dedupes... yes
+creating Makefile
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/unicorn-5.8.0/ext/unicorn_http
+make DESTDIR\= clean
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/unicorn-5.8.0/ext/unicorn_http
+make DESTDIR\=
+compiling httpdate.c
+compiling unicorn_http.c
+In file included from unicorn_http.rl:12:
+./common_field_optimization.h:86:15: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+  id_uminus = rb_intern("-@");
+              ^~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+./common_field_optimization.h:86:15: note: '{' token is here
+  id_uminus = rb_intern("-@");
+              ^~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1811:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+In file included from unicorn_http.rl:12:
+./common_field_optimization.h:86:15: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+  id_uminus = rb_intern("-@");
+              ^~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1816:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+./common_field_optimization.h:86:15: note: ')' token is here
+  id_uminus = rb_intern("-@");
+              ^~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+unicorn_http.rl:1025:22: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+  id_set_backtrace = rb_intern("set_backtrace");
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+unicorn_http.rl:1025:22: note: '{' token is here
+  id_set_backtrace = rb_intern("set_backtrace");
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1811:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+unicorn_http.rl:1025:22: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+  id_set_backtrace = rb_intern("set_backtrace");
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1816:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+unicorn_http.rl:1025:22: note: ')' token is here
+  id_set_backtrace = rb_intern("set_backtrace");
+                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+unicorn_http.rl:1031:21: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+  id_is_chunked_p = rb_intern("is_chunked?");
+                    ^~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+unicorn_http.rl:1031:21: note: '{' token is here
+  id_is_chunked_p = rb_intern("is_chunked?");
+                    ^~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1811:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+unicorn_http.rl:1031:21: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+  id_is_chunked_p = rb_intern("is_chunked?");
+                    ^~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1816:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+unicorn_http.rl:1031:21: note: ')' token is here
+  id_is_chunked_p = rb_intern("is_chunked?");
+                    ^~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/2.6.0/include/ruby-2.6.0/ruby/ruby.h:1826:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+unicorn_http.c:338:18: warning: unused variable 'http_parser_en_ChunkedBody_chunk_chunk_end' [-Wunused-const-variable]
+static const int http_parser_en_ChunkedBody_chunk_chunk_end = 105;
+                 ^
+unicorn_http.c:340:18: warning: unused variable 'http_parser_en_main' [-Wunused-const-variable]
+static const int http_parser_en_main = 1;
+                 ^
+8 warnings generated.
+linking shared-object unicorn_http.bundle
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/2.6.0/gems/unicorn-5.8.0/ext/unicorn_http
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 unicorn_http.bundle ./.gem.20220114-76940-1bva1p2
