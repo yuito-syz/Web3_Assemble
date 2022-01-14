@@ -1,0 +1,11 @@
+=== kgio 2.11.4 / 2021-05-25 23:24 UTC
+
+  This release fixes compatibility with GC.compact on Ruby 3.x.
+  Thanks to Ngan Pham for the patch and Aaron Patterson for the
+  feedback:
+
+    https://yhbt.net/kgio-public/CAAvYYt5Z5f2rMuXO5DMpR1-6uRvu_gXKDvqcyoZ+oNcLiTH39g@mail.gmail.com/T/
+
+  kgio remains obsolete and deprecated, and it's primary dependent
+  will be updated to not depend on it in the future.
+
