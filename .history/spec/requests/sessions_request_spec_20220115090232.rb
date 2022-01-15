@@ -5,7 +5,7 @@ RSpec.describe "Sessions", type: :request do
 
   describe "delete /logout" do
     before do
-      post login_path, params: { user: {
+      post login_path, params: { Sessions: {
         email: user.email,
         password: user.password
       } }

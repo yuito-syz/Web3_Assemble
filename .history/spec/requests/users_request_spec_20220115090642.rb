@@ -9,8 +9,8 @@ RSpec.describe "Users", type: :request do
           post users_path, params: { user: user } # <= paramsの中身はハッシュの形
         end.to change(User, :count).by(1)
         expect(response).to have_http_status(302)
-        expect(response).to redirect_to root_path
-        expect(is_logged_in?).to be_falsy
+        expect(response).to redirect_to user_path(User.last)
+        expect(is_logged_in?).to be_truthy  #<= 追加
       end
     end
   end
