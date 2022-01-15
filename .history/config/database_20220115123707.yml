@@ -27,4 +27,4 @@ production:
   host: <%= ENV['DATABASE_ENDPOINT'] %>
   port: <%= ENV.fetch('DATABASE_PORT', 5432) %>
   username: <%= Rails.application.credentials.dig(:production, :database_username) %>
-  password: <%= Rails.application.credentials.dig(:production, :database_password) %>>
+  password: <%= Rails.application.credentials.dig(:production, :database_password) %>
