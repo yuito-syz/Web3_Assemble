@@ -1,8 +1,0 @@
-<div class="like_button_on">
-    <%= link_to "いいね済み", likes_delete_path(micropost_id: @micropost.id), {method: "post", remote: true} %>
-    <%= @like_count %>
-</div>
-<div class="like_button">
-    <%= link_to "いいね", create_likes_path(micropost_id: @micropost.id), {method: "post", remote: true} %>
-    <%= @like_count %>
-</div>

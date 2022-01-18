@@ -1,6 +1,0 @@
-<<<<<<< HEAD
-export PORTFOLIO_DB_PASSWORD="Cream/8122"
-=======
-export PORTFOLIO_DB_USERNAME="root"
-export PORTFOLIO_DB_PASSWORD="Cream/localhost"
->>>>>>> 8e920e30f1647141a27c7fbc20a8e8e31c3e2589

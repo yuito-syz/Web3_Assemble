@@ -1,2 +1,0 @@
-class WordOfMouth < ApplicationRecord
-end
