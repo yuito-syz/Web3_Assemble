@@ -72,8 +72,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-    
-    # beforeアクション
 
     # 正しいユーザーかどうか確認
     def correct_user
