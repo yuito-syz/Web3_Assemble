@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token, :activation_token, :reset_token
-  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   before_save :downcase_email
   before_create :create_activation_digest
@@ -52,11 +51,6 @@ class User < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
   
-  # ユーザーのログイン情報を破棄する
-  def forget
-    update_attribute(:remember_digest, nil)
-  end
-  
   # アカウントを有効にする
   def activate
     user.update_attribute(:activated,    true)
@@ -75,15 +69,7 @@ class User < ApplicationRecord
     update_attribute(:reset_sent_at, Time.zone.now)
   end
 
-  # パスワード再設定のメールを送信する
-  def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
-  end
   
-  # パスワード再設定の期限が切れている場合はtrueを返す
-  def password_reset_expired?
-    reset_sent_at < 2.hours.ago
-  end
   
   # ユーザーのステータスフィードを返す
   def feed
