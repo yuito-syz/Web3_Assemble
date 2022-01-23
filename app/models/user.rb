@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
-          :confirmable, :omniauthable
+          :omniauthable
   include DeviseTokenAuth::Concerns::User
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
@@ -15,7 +15,6 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token, :activation_token, :reset_token
   has_many :likes, dependent: :destroy
-  before_create :create_activation_digest
   
   # ユーザーのステータスフィードを返す
   def feed
