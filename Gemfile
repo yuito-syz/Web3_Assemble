@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails',      '7.0.1'
+gem 'rails',  '6.1.4'
 gem 'sqlite3', '~> 1.4', '>= 1.4.2'
 gem 'image_processing'
 gem 'mini_magick'
@@ -24,6 +24,10 @@ gem 'net-pop', require: false
 gem 'net-imap', require: false
 gem 'bootsnap', require: false
 gem 'dotenv-rails'
+gem 'rack-cors'
+gem 'devise'
+gem 'devise_token_auth'
+gem 'omniauth', '~> 2.0', '>= 2.0.4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,7 +42,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console'
+  gem 'web-console', '~> 3.3', '>= 3.3.1'
   gem 'listen'
   gem 'spring'
   gem 'spring-commands-rspec'
