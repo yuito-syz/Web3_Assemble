@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
-  include SessionsHelper
-  
+  include DeviseTokenAuth::Concerns::SetUserByToken
+
   private
 
     # ユーザーのログインを確認する
