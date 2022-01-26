@@ -12,7 +12,7 @@
 |  フロントエンド  | バックエンド | インフラ |
 | ---- | ---- | ---- |
 |  HTML / CSS / JavaScript  |  Ruby 3.1.0  | Docker |
-|  Nuxt.js + Vuetify  |  Rails 7.0.1  | CircleCI |
+|  Nuxt.js + Vuetify  |  Rails 6.1.4  | CircleCI |
 |    |  Rspec  | AWS / Terraform |
 
 ## 工夫した点
@@ -28,12 +28,3 @@
 
 |管理者機能| 
 | ---- |
-
-
-
-
-## ライセンス
-
-[Ruby on Rails チュートリアル](https://railstutorial.jp/)内にある
-ソースコードはMITライセンスとBeerwareライセンスのもとで公開されています。
-詳細は [LICENSE.md](LICENSE.md) をご覧ください。
