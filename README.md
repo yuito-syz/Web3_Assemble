@@ -23,7 +23,7 @@
 | ---- | ---- | ---- |
 |  HTML / CSS / JavaScript  |  Ruby 3.1.0  | Docker |
 |  Nuxt.js + Vuetify  |  Rails 6.1.4  | CircleCI |
-|    |  Rspec  | AWS / Terraform |
+|  Tailwind CSS  |  Rspec  | AWS / Terraform |
 
 ## 工夫した点
 ## 機能一覧
