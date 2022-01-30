@@ -24,3 +24,11 @@ export const logout = async () => {
       removeAuthDataFromStorage()
     })
 }
+
+export const validateToken = async () => {
+  return await Client.get('/auth/validate_token', { headers: getAuthDataFromStorage() })
+    .then((response) => {
+      setAuthDataFromResponse(response.headers)
+      return response.data
+    })
+}
