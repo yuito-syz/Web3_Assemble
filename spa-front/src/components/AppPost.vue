@@ -1,5 +1,6 @@
 <template>
     <div class="rounded overflow-hidden shadow-lg mt-8 pt-8 mr-8">
+      <img :src="post.icatchUrl">
       <div class="font-bold text-xl mb-2">{{post.title}}</div>
       <p class="text-grey-darker text-base">
         {{ post.body }}
