@@ -29,6 +29,7 @@ gem 'rack-cors'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
+gem 'devise-two-factor'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
