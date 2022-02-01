@@ -15,6 +15,15 @@
             <div class="ml-3 relative">
               <div>
                 <button class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
+                <button @click='moveAccount()' class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">MyPage</button>
+                </button>
+              </div>
+            </div>
+        </div>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div class="ml-3 relative">
+              <div>
+                <button class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
                   <img class="h-8 w-8 rounded-full" src="../assets/logo.png">
                 </button>
               </div>
@@ -47,10 +56,15 @@
       const moveNewPost = () => {
         router.push('/posts/new')
       }
+
+      const moveAccount = () => {
+        router.push('/account')
+      }
   
       return {
         movePosts,
-        moveNewPost
+        moveNewPost,
+        moveAccount
       }
     }
   })

@@ -6,4 +6,5 @@ export type User = {
     nickname: string;
     provider: string;
     uid: string;
+    otp_required_for_login: boolean;
 }

@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Post from '@/views/Post.vue'
 import NewPost from '@/views/NewPost.vue'
+import Account from '@/views/Account.vue' 
 import { authorizeToken } from './authGuard' 
 
 const routes: Array<RouteRecordRaw> = [
@@ -27,6 +28,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/posts/new',
     name: 'NewPost',
     component: NewPost,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: Account,
     meta: { requiresAuth: true }
   },
   {
