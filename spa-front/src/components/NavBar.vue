@@ -11,7 +11,7 @@
               </div>
             </div>
           </div>
-          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div v-if="isUserSignedIn()" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div class="ml-3 relative">
               <div>
                 <button class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
@@ -20,7 +20,7 @@
               </div>
             </div>
         </div>
-          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div v-if="isUserSignedIn()" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div class="ml-3 relative">
               <div>
                 <button class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
@@ -29,7 +29,7 @@
               </div>
             </div>
           </div>
-          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div v-if="isUserSignedIn()" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div class="ml-3 relative">
               <div>
                 <button @click='moveNewPost()' class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">create Post</button>
@@ -44,11 +44,15 @@
 <script lang="ts">
   import { defineComponent } from 'vue'
   import router from '@/router'
+  import { logout } from '@/api/auth'
+  import { useState } from '@/state/use-state' 
   
   export default defineComponent({
     name: 'NavBar',
   
     setup () {
+      const state = useState()
+
       const movePosts = () => {
         router.push('/posts')
       }
@@ -60,11 +64,29 @@
       const moveAccount = () => {
         router.push('/account')
       }
+
+      const handleLogOut = async () => {
+      await logout()
+        .then(() => {
+          state.removeAuthState() // 追加
+          router.push('/login')
+        })
+      }
+
+      const isUserSignedIn = () => {
+        if (state.authState['access-token']) {
+          return true
+        } else {
+          return false
+        }
+      }
   
       return {
         movePosts,
         moveNewPost,
-        moveAccount
+        moveAccount,
+        handleLogOut,
+        isUserSignedIn 
       }
     }
   })
