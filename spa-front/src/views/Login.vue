@@ -1,100 +1,90 @@
-# src/views/Login.vue
-
 <template>
-  <div class="mt-16 px-16 mx-auto xl:max-w-3xl">
-    <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
-      xl:text-bold">
-      Login
-    </h2>
-    <div v-if="isTwoFactorAuth" class="mt-12">
-      <div class="mt-8">
-        <div class="flex justify-between items-center">
-          <div class="text-sm font-bold text-gray-700 tracking-wide">
-            OtpCode
+  <nav class="w-full bg-gray-800">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="relative flex items-center justify-between h-16">
+        <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex-shrink-0 flex items-center">
+          </div>
+          <div class="hidden sm:block sm:ml-6">
+            <div class="flex space-x-4">
+              <button @click='movePosts()' class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Top</button>
+            </div>
           </div>
         </div>
-        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" v-model="otp_code" type="password" placeholder="Enter your OtpCode">
-      </div>
-      <div class="mt-10">
-        <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
-                       font-semibold font-display focus:outline-none focus:shadow-outline
-                       hover:bg-indigo-600 shadow-lg"
-                @click="handleLogin"
-        >
-          Login
-        </button>
+        <div v-if="isUserSignedIn()" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div class="ml-3 relative">
+            <div>
+              <button class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
+              <button @click='moveAccount()' class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">MyPage</button>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div v-if="isUserSignedIn()" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div class="ml-3 relative">
+            <div>
+              <button @click='moveNewPost()' class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">create Post</button>
+            </div>
+          </div>
+        </div>
+        <div v-if="isUserSignedIn()" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div class="ml-3 relative">
+            <div>
+              <button @click='handleLogOut()' class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Log Out</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div v-else class="mt-12">
-      <div class="mt-8">
-        <div class="flex justify-between items-center">
-          <div class="text-sm font-bold text-gray-700 tracking-wide">
-            Email
-          </div>
-        </div>
-        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" v-model="email" type="email" placeholder="Enter your Email">
-      </div>
-      <div class="mt-8">
-        <div class="flex justify-between items-center">
-          <div class="text-sm font-bold text-gray-700 tracking-wide">
-            Password
-          </div>
-        </div>
-        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" v-model="password" type="password" placeholder="Enter your password">
-      </div>
-      <div class="mt-10">
-        <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
-                       font-semibold font-display focus:outline-none focus:shadow-outline
-                       hover:bg-indigo-600 shadow-lg"
-                @click="handleLogin"
-        >
-          Login
-        </button>
-      </div>
-    </div>
-  </div>
+  </nav>
 </template>
 
 <script lang="ts">
-/* eslint-disable @typescript-eslint/camelcase */
-
-import { defineComponent, reactive, ref, toRefs } from 'vue'
-import { login } from '@/api/auth'
+import { defineComponent } from 'vue'
 import router from '@/router'
+import { logout } from '@/api/auth'
+import { useState } from '@/state/use-state'
 
 export default defineComponent({
-  name: 'Home',
+  name: 'NavBar',
+
   setup () {
-    const formData = reactive({
-      email: '',
-      password: '',
-      otp_code: ''
-    })
+    const state = useState()
 
-    const isTwoFactorAuth = ref(false)
+    const movePosts = () => {
+      router.push('/')
+    }
 
-    const handleLogin = async () => {
-      await login(formData.email, formData.password, formData.otp_code)
-        .then((res) => {
-          if (res?.data.two_factor_auth) {
-            isTwoFactorAuth.value = true
-          } else {
-            if (res?.status === 200) {
-              router.push('/')
-            } else {
-              alert('メールアドレスかパスワードが間違っています。')
-            }
-          }
-        })
-        .catch(() => {
-          alert('ログインに失敗しました。')
+    const moveNewPost = () => {
+      router.push('/posts/new')
+    }
+
+    const moveAccount = () => {
+      router.push('/account')
+    }
+
+    const handleLogOut = async () => {
+      await logout()
+        .then(() => {
+          state.removeAuthState()
+          router.push('/login')
         })
     }
 
+    const isUserSignedIn = () => {
+      if (state.authState['access-token']) {
+        return true
+      } else {
+        return false
+      }
+    }
+
     return {
-      ...toRefs(formData),
-      isTwoFactorAuth,
-      handleLogin
+      movePosts,
+      moveNewPost,
+      moveAccount,
+      handleLogOut,
+      isUserSignedIn
     }
   }
 })

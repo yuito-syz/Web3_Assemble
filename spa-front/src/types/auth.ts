@@ -5,3 +5,5 @@ export type AuthHeaders = {
     'expiry': string | null;
     'Content-Type': string;
 }
+
+export type AccessToken = Pick<AuthHeaders, 'access-token'>
