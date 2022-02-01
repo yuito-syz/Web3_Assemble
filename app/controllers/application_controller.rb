@@ -1,14 +1,10 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  private
+  protected
 
-    # ユーザーのログインを確認する
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :otp_code])
+  end
 end

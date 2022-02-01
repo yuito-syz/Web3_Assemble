@@ -1,4 +1,14 @@
 class User < ApplicationRecord
+  TOKEN_VALIDATION_RESPONSE_ATTRS = [
+    :otp_required_for_login,
+    :id,
+    :provider,
+    :email,
+    :uid,
+    :name,
+    :nickname,
+    :image
+  ]
   devise :two_factor_authenticatable,
          :otp_secret_encryption_key => Rails.application.credentials.devise_two_factor[:ENCRYPTION_KEY]
 
@@ -40,6 +50,11 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  # 省略
+  def token_validation_response
+    self.as_json(only: TOKEN_VALIDATION_RESPONSE_ATTRS)
   end
 
 end
