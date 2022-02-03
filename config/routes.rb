@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resource :account, only: :show
     end
 
+    resources :posts
+
     resources :users do
       resources :posts
       resource :two_factor_auth, only: [:show, :create]
