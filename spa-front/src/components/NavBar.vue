@@ -68,7 +68,7 @@
       const handleLogOut = async () => {
       await logout()
         .then(() => {
-          state.removeAuthState() // 追加
+          state.removeAuthState()
           router.push('/login')
         })
       }
