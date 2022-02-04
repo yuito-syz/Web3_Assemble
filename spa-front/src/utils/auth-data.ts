@@ -3,9 +3,9 @@ import { AuthHeaders } from '@/types/auth'
 export const getAuthDataFromStorage = (): AuthHeaders => {
   return {
     'access-token': localStorage.getItem('access-token'),
-    client: localStorage.getItem('client'),
-    expiry: localStorage.getItem('expiry'),
-    uid: localStorage.getItem('uid'),
+    'client': localStorage.getItem('client'),
+    'expiry': localStorage.getItem('expiry'),
+    'uid': localStorage.getItem('uid'),
     'Content-Type': 'application/json'
   }
 }
@@ -29,9 +29,9 @@ export const removeAuthDataFromStorage = (): void => {
 export const getAuthDataFromStorageWithFormData = (): AuthHeaders => {
   return {
     'access-token': localStorage.getItem('access-token'),
-    client: localStorage.getItem('client'),
-    expiry: localStorage.getItem('expiry'),
-    uid: localStorage.getItem('uid'),
+    'client': localStorage.getItem('client'),
+    'expiry': localStorage.getItem('expiry'),
+    'uid': localStorage.getItem('uid'),
     'Content-Type': 'multipart/form-data'
   }
 }

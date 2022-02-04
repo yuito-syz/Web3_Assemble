@@ -8,7 +8,7 @@ import {
 import { AxiosResponse, AxiosError } from 'axios'
 
 export const login = async (email: string, password: string, otp_code: string) => {
-  return await Client.post<User>('/auth/sign_in', { email, password, otp_code})
+  return await Client.post<User>('/auth/sign_in', { email, password, otp_code })
     .then((res: AxiosResponse<User>) => {
       setAuthDataFromResponse(res.headers)
       return res
