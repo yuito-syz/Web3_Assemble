@@ -1,4 +1,4 @@
-# spa-front
+# sample-front
 
 ## Project setup
 ```

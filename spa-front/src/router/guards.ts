@@ -13,7 +13,7 @@ export const authorizeToken = (to: RouteLocationNormalized, from: RouteLocationN
   } else if (to.matched.some((record: RouteRecordNormalized) => record.meta.requiresNotAuth)) {
     validateToken()
       .then(() => {
-        next({ path: '/posts' })
+        next({ path: '/' })
       })
       .catch(() => {
         next()

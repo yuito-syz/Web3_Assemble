@@ -1,25 +1,20 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Post from '@/views/Post.vue'
+import PostDetail from '@/views/PostDetail.vue'
 import NewPost from '@/views/NewPost.vue'
-import Account from '@/views/Account.vue' 
-import { authorizeToken } from './authGuard' 
+import Account from '@/views/Account.vue'
+import { authorizeToken } from './guards'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {                  
-    path: '/login', 
-    name: 'Login', 
+    path: '/login',
+    name: 'Login',
     component: Login,
-    meta: { requiresNotAuth: true } 
-  },  
+    meta: { requiresNotAuth: true }
+  },
   {
-    path: '/posts',
+    path: '/',
     name: 'Post',
     component: Post,
     meta: { requiresAuth: true }
@@ -31,18 +26,16 @@ const routes: Array<RouteRecordRaw> = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/posts/:id',
+    name: 'PostDetail',
+    component: PostDetail,
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/account',
     name: 'Account',
     component: Account,
     meta: { requiresAuth: true }
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]
 
@@ -50,6 +43,6 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+router.beforeEach(authorizeToken)
 
-router.beforeEach(authorizeToken) 
 export default router

@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import Client from '@/api/client'
-import { User } from '@/types/user'
 import {
   getAuthDataFromStorage,
   removeAuthDataFromStorage,
   setAuthDataFromResponse
 } from '@/utils/auth-data'
-import { AxiosResponse, AxiosError } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
+import { User } from '@/types/user'
 
 export const login = async (email: string, password: string, otp_code: string) => {
-  return await Client.post<User>('/auth/sign_in', { email, password, otp_code })
+  return await Client.post('/auth/sign_in', { email, password, otp_code })
     .then((res: AxiosResponse<User>) => {
       setAuthDataFromResponse(res.headers)
       return res

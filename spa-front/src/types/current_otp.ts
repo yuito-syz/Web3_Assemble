@@ -1,3 +1,3 @@
 export type CurrentOtp = {
-    otp_uri: string;
+  otp_uri: string;
 }
