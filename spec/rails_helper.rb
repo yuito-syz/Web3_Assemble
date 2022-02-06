@@ -22,10 +22,6 @@ include Capybara::DSL
 # of increasing the boot-up time by auto-requiring all files in the support
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
-RSpec.configure do |config|
-  config.include Rails.application.routes.url_helpers
-end
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -35,6 +31,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  Dir[Rails.root.join('spec/supports/**/*.rb')].sort.each { |f| require f }
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -43,6 +40,10 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.include Rails.application.routes.url_helpers
+  config.include FactoryBot::Syntax::Methods
+  config.include LoginModule
+  config.include AuthHelper, type: :request
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -59,16 +60,12 @@ RSpec.configure do |config|
   #
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
+  Capybara.javascript_driver = :poltergeist
+  Capybara.server = :puma
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  # FactoryBotの省略
-  config.include FactoryBot::Syntax::Methods
-  # module読み込み
-  config.include LoginModule
-  Capybara.javascript_driver = :poltergeist
-  Capybara.server = :puma
 end

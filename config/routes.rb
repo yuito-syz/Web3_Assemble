@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
-  resources :word_of_mouths
-  root 'static_pages#home'
-  get  '/help',    to: 'static_pages#help'
-  get  '/about',   to: 'static_pages#about'
-  get  '/contact', to: 'static_pages#contact'
-  resources :likes, only: [:create, :destroy]
-  resources :users do
-    get :search, on: :collection
-    member do
-      get :following, :followers
+  mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+    sessions: 'devise_token_auth/sessions'
+  }
+  scope format: 'json' do
+    namespace :users do 
+      resource :account, only: :show
     end
-    resources :microposts, only: %i[index show create] do
+
+    resources :posts
+
+    resources :users do
+      resources :posts
+      resource :two_factor_auth, only: [:show, :create]
     end
   end
-  resources :microposts,          only: [:create, :destroy]
-  resources :relationships,       only: [:create, :destroy]
 end

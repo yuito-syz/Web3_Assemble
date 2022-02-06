@@ -1,8 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue'
+import App from '@/App.vue'
+import router from '@/router'
+import '@/assets/styles/tailwind.css'
+import VueQrcode from '@chenfengyuan/vue-qrcode'
+import { globalAuthState, authStateKey } from '@/state/global-state'
 
-Vue.config.productionTip = false
+const app = createApp(App)
+  .use(router)
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+if (VueQrcode.name) {
+  app.component(VueQrcode.name, VueQrcode)
+}
+
+app.provide(authStateKey, globalAuthState()).mount('#app')

@@ -11,11 +11,13 @@
     "bootstrap": "3.4.1",
     "jquery": "3.4.1",
     "turbolinks": "^5.2.0",
+    "typescript": "^3.9.4",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "eslint-loader": "^4.0.2",
     "webpack-dev-server": "^3"
   }
 }

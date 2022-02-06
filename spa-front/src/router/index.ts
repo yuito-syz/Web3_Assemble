@@ -1,16 +1,48 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '@/views/Home.vue' // @記法に修正
-import Login from '@/views/Login.vue' // 追加
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import Login from '@/views/Login.vue'
+import Post from '@/views/Post.vue'
+import PostDetail from '@/views/PostDetail.vue'
+import NewPost from '@/views/NewPost.vue'
+import Account from '@/views/Account.vue'
+import { authorizeToken } from './guards'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: { requiresNotAuth: true }
   },
-  {                  
-    path: '/login',  
-    name: 'Login', 
-    component: Login 
+  {
+    path: '/',
+    name: 'Post',
+    component: Post,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/posts/new',
+    name: 'NewPost',
+    component: NewPost,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/posts/:id',
+    name: 'PostDetail',
+    component: PostDetail,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: Account,
+    meta: { requiresAuth: true }
   }
 ]
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+})
+router.beforeEach(authorizeToken)
+
+export default router

@@ -59,6 +59,8 @@ GEM
       activesupport (= 6.1.4)
       marcel (~> 1.0.0)
       mini_mime (>= 1.1.0)
+    activestorage-validator (0.2.0)
+      rails (>= 6.0.4.1)
     activesupport (6.1.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
@@ -69,6 +71,8 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    attr_encrypted (3.1.0)
+      encryptor (~> 3.0.0)
     autoprefixer-rails (10.4.2.0)
       execjs (~> 2)
     bcrypt (3.1.16)
@@ -119,6 +123,12 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-two-factor (4.0.1)
+      activesupport (< 6.2)
+      attr_encrypted (>= 1.3, < 4, != 2)
+      devise (~> 4.0)
+      railties (< 6.2)
+      rotp (~> 6.0)
     devise_token_auth (1.2.0)
       bcrypt (~> 3.0)
       devise (> 3.5.2, < 5)
@@ -129,6 +139,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    encryptor (3.0.0)
     erubi (1.10.0)
     execjs (2.8.1)
     factory_bot (6.2.0)
@@ -140,6 +151,8 @@ GEM
       i18n (>= 1.6, < 2)
     ffi (1.15.5)
     formatador (1.0.0)
+    gimei (1.0.1)
+      romaji
     globalid (1.0.0)
       activesupport (>= 5.0)
     guard (2.18.0)
@@ -274,6 +287,9 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
+    rotp (6.2.0)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.2)
@@ -363,6 +379,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_storage_validations
+  activestorage-validator
   bcrypt
   bootsnap
   bootstrap-sass
@@ -376,10 +393,12 @@ DEPENDENCIES
   capybara
   counter_culture
   devise
+  devise-two-factor
   devise_token_auth
   dotenv-rails
   factory_bot_rails
   faker
+  gimei
   guard
   guard-minitest
   image_processing
