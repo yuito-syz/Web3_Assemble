@@ -39,3 +39,5 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+find . -size +100M | sed -e 's/^\.\///'
