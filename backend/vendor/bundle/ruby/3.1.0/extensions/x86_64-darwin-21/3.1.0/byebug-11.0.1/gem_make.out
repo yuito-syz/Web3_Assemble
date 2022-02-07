@@ -1,0 +1,44 @@
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/3.1.0/gems/byebug-11.0.1/ext/byebug
+/Users/nemuson/.rbenv/versions/3.1.0/bin/ruby -I /Users/nemuson/.rbenv/versions/3.1.0/lib/ruby/site_ruby/3.1.0 -r ./siteconf20220114-82134-n2z9ol.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/3.1.0/gems/byebug-11.0.1/ext/byebug
+make DESTDIR\= clean
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/3.1.0/gems/byebug-11.0.1/ext/byebug
+make DESTDIR\=
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+context.c:190:20: warning: incompatible function pointer types passing 'VALUE (struct call_with_inspection_data *)' (aka 'unsigned long (struct call_with_inspection_data *)') to parameter of type 'VALUE (*)(VALUE)' (aka 'unsigned long (*)(unsigned long)') [-Wincompatible-function-pointer-types]
+  return rb_ensure(open_debug_inspector, (VALUE)data, close_debug_inspector,
+                   ^~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/3.1.0/include/ruby-3.1.0/ruby/internal/iterator.h:425:25: note: passing argument to parameter 'b_proc' here
+VALUE rb_ensure(VALUE (*b_proc)(VALUE), VALUE data1, VALUE (*e_proc)(VALUE), VALUE data2);
+                        ^
+context.c:190:55: warning: incompatible function pointer types passing 'VALUE (struct call_with_inspection_data *)' (aka 'unsigned long (struct call_with_inspection_data *)') to parameter of type 'VALUE (*)(VALUE)' (aka 'unsigned long (*)(unsigned long)') [-Wincompatible-function-pointer-types]
+  return rb_ensure(open_debug_inspector, (VALUE)data, close_debug_inspector,
+                                                      ^~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/3.1.0/include/ruby-3.1.0/ruby/internal/iterator.h:425:62: note: passing argument to parameter 'e_proc' here
+VALUE rb_ensure(VALUE (*b_proc)(VALUE), VALUE data1, VALUE (*e_proc)(VALUE), VALUE data2);
+                                                             ^
+context.c:672:3: warning: incompatible function pointer types passing 'VALUE (VALUE)' (aka 'unsigned long (unsigned long)') to parameter of type 'VALUE (*)(VALUE, VALUE)' (aka 'unsigned long (*)(unsigned long, unsigned long)') [-Wincompatible-function-pointer-types]
+  rb_define_singleton_method(cDebugThread, "inherited", dt_inherited, 1);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/nemuson/.rbenv/versions/3.1.0/include/ruby-3.1.0/ruby/internal/anyargs.h:307:143: note: expanded from macro 'rb_define_singleton_method'
+#define rb_define_singleton_method(obj, mid, func, arity)   RBIMPL_ANYARGS_DISPATCH_rb_define_singleton_method((arity), (func))((obj), (mid), (func), (arity))
+                                                                                                                                              ^~~~~~
+/Users/nemuson/.rbenv/versions/3.1.0/include/ruby-3.1.0/ruby/internal/anyargs.h:270:1: note: passing argument to parameter here
+RBIMPL_ANYARGS_DECL(rb_define_singleton_method, VALUE, const char *)
+^
+/Users/nemuson/.rbenv/versions/3.1.0/include/ruby-3.1.0/ruby/internal/anyargs.h:255:72: note: expanded from macro 'RBIMPL_ANYARGS_DECL'
+RBIMPL_ANYARGS_ATTRSET(sym) static void sym ## _01(__VA_ARGS__, VALUE(*)(VALUE, VALUE), int); \
+                                                                       ^
+3 warnings generated.
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/nemuson/Development/rails/portfolio/vendor/bundle/ruby/3.1.0/gems/byebug-11.0.1/ext/byebug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20220114-82134-pinxaj/byebug
