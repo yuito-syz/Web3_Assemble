@@ -1,0 +1,53 @@
+# zenn-app/docker-compose.yml
+version: "3"
+
+services:
+  db:
+    container_name: db
+    image: keinos/sqlite3:latest
+    environment:
+      TZ: Asia/Tokyo
+      SQLITE3_PASSWORD: "yes"
+    volumes:
+      - ./sqlite:/var/sqlite/
+    ports:
+      - 3307:3306
+    networks:
+      app_net:
+        ipv4_address: '172.20.0.2'
+
+  backend:
+    container_name: spa-api
+    build: ./spa-api/
+    image: spa-api
+    command: bundle exec rails server -b 0.0.0.0
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./spa-api:/app:cached
+      - bundle_data:/usr/local/bundle:cached
+      - /app/vendor
+      - /app/tmp
+      - /app/log
+      - /app/.git
+    environment:
+      TZ: Asia/Tokyo
+    depends_on:
+      - db
+    ports:
+      - 5000:3000 # ポートフォワード
+    networks:
+      app_net:
+        ipv4_address: '172.20.0.3'
+
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24
+
+volumes:
+  sqlite_data:
+  bundle_data:
