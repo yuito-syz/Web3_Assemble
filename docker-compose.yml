@@ -1,15 +1,14 @@
-# zenn-app/docker-compose.yml
 version: "3"
 
 services:
   db:
     container_name: db
-    image: keinos/sqlite3:latest
+    image: mysql:5.7.37
     environment:
       TZ: Asia/Tokyo
-      SQLITE3_PASSWORD: "yes"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
-      - ./sqlite:/var/sqlite/
+      - mysql_data:/var/lib/mysql
     ports:
       - 3307:3306
     networks:
@@ -17,14 +16,14 @@ services:
         ipv4_address: '172.20.0.2'
 
   backend:
-    container_name: spa-api
-    build: ./spa-api/
-    image: spa-api
+    container_name: backend
+    build: ./backend/
+    image: backend
     command: bundle exec rails server -b 0.0.0.0
     tty: true
     stdin_open: true
     volumes:
-      - ./spa-api:/app:cached
+      - ./backend:/app:cached
       - bundle_data:/usr/local/bundle:cached
       - /app/vendor
       - /app/tmp
@@ -35,7 +34,7 @@ services:
     depends_on:
       - db
     ports:
-      - 5000:3000 # ポートフォワード
+      - 5000:3000
     networks:
       app_net:
         ipv4_address: '172.20.0.3'
@@ -49,5 +48,5 @@ networks:
         - subnet: 172.20.0.0/24
 
 volumes:
-  sqlite_data:
+  mysql_data:
   bundle_data:

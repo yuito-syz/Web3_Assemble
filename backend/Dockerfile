@@ -6,7 +6,8 @@ ENV TZ Asia/Tokyo
 RUN mkdir /app
 WORKDIR /app
 
-ADD Gemfile /app/Gemfile
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 
 RUN apt-get update -qq && \
   apt-get install -y build-essential \
