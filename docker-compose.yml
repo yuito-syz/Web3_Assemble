@@ -46,8 +46,8 @@ services:
     volumes:
       - ./frontend:/app
     ports:
-      - 3000:3000
-    command: "npm run dev"
+      - 8080:3000
+    command: "npm run serve"
     networks:
       app_net:
         ipv4_address: '172.20.0.4'
