@@ -22,7 +22,7 @@
 <script lang="ts">
   import { createPost } from '@/api/post'
   import router from '@/router'
-  import { defineComponent, reactive, toRefs } from 'vue'
+  import { defineComponent, reactive, toRefs } from '@vue/composition-api'
   
   export default defineComponent({
     name: 'NewPost',

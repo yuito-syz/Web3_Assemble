@@ -6,7 +6,7 @@
 </template>
 
 <script lang='ts'>
-  import { defineComponent } from 'vue'
+  import { defineComponent } from '@vue/composition-api'
   import NavBar from '@/components/NavBar.vue'
 
   export default defineComponent({

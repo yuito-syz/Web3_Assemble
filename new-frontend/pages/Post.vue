@@ -10,7 +10,7 @@
 </template>
   
 <script lang="ts">
-  import { defineComponent, onMounted, ref } from 'vue'
+  import { defineComponent, onMounted, ref } from '@vue/composition-api'
   import AppPost from '@/components/AppPost.vue'
   import { getPosts } from '@/api/post'
   import { Post } from '@/types/post'

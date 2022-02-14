@@ -40,7 +40,7 @@
   </template>
   
   <script lang="ts">
-  import { defineComponent } from 'vue'
+  import { defineComponent } from '@vue/composition-api'
   import router from '@/router'
   import { logout } from '@/api/auth'
   import { useState } from '@/state/use-state'
