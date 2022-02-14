@@ -18,7 +18,7 @@
   
   <script lang="ts">
   import { Post } from '@/types/post'
-  import { defineComponent, PropType } from 'vue'
+  import { defineComponent, PropType } from '@vue/composition-api'
   import { formatDate } from '@/pipes/date-pipe'
   import { truncateText } from '@/utils/truncate-text'
   

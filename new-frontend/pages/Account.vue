@@ -39,7 +39,7 @@
   </template>
   
   <script lang="ts">
-  import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
+  import { defineComponent, onMounted, reactive, ref, toRefs } from '@vue/composition-api'
   import { getAccount, createQrCode, verifyOtpCode } from '@/api/user'
   import { User } from '@/types/user'
   import router from '@/router'

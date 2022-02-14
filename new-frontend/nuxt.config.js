@@ -43,6 +43,8 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxt/postcss8',
+    '@nuxtjs/composition-api/module'
+    ["@nuxtjs/router", { fileName: "router/index.ts" }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

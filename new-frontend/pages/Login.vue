@@ -56,7 +56,7 @@
   <script lang="ts">
   /* eslint-disable @typescript-eslint/camelcase */
   
-  import { defineComponent, reactive, ref, toRefs } from 'vue'
+  import { defineComponent, reactive, ref, toRefs } from '@vue/composition-api'
   import { login } from '@/api/auth'
   import router from '@/router'
   import { useState } from '@/state/use-state'
