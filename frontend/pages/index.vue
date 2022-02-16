@@ -1,87 +1,44 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+  <container>
+    <cols offset-md="1" md="10" class="mt-3">
+        <jumbotron class="pb-5">
+          <template #header>Hello World!</template>
+          <div v-if="this.$auth.loggedIn">
+            <h2>ログイン済み</h2>
           </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+          <div v-if="!this.$auth.loggedIn">
+            <h2>未ログイン</h2>
+          </div>
+          <hr class="my-4">
+          <button v-if="!this.$auth.loggedIn" variant="primary" to="/signup">サインアップ</button>
+          <button v-if="!this.$auth.loggedIn" variant="info" to="/login">ログイン</button>
+          <button v-if="this.$auth.loggedIn" variant="success" to="/update">アカウント情報変更</button>
+          <button v-if="this.$auth.loggedIn" variant="danger" @click="logout">ログアウト</button>
+        <jumbotron>
+    </cols>
+  </container>
 </template>
 
 <script>
-export default {
-  name: 'IndexPage',
-}
+  export default({
+    data: function () {
+      return {
+      }
+    },
+    methods: {
+      async logout() {
+        await this.$auth.logout()
+        .then( 
+          ()=>{
+            localStorage.removeItem("access-token")
+            localStorage.removeItem("client")
+            localStorage.removeItem("uid")
+            localStorage.removeItem("token-type")
+          }
+        )
+      }
+    },
+  })
 </script>
+
+<style></style>
