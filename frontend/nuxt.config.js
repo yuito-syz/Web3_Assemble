@@ -24,7 +24,9 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~/plugins/axios.js'
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -45,13 +47,35 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/auth',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://localhost:5 000',
   },
+
+  auth: {
+    redirect: {
+      login: '/login', //middleware:authを設定したURLにアクセスがあった場合の、リダイレクト先。
+      logout: '/', //ログアウト後のリダイレクト先
+      callback: false,
+      home: '/' ///ログイン後のリダイレクト先。
+     },
+    strategies: {
+      local: {
+        endpoints: {
+          //ログイン処理に関する設定
+          login: { url: '/api/auth/sign_in', method: 'post',propertyName: 'access_token'}, 
+          //ログアウト処理に関する設定
+          logout: { url: '/api/auth/sign_out', method: 'delete' },
+          //ログイン時にユーザー情報を保存するか。
+          user: false 
+         },
+       }
+     },
+   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
