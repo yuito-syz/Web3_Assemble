@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <wel-app-bar/>
+    <wel-app-bar
+      :menus="menus"
+    />
     
 
     <v-content>
@@ -25,7 +27,7 @@
 
 <script>
   import welAppBar from '../components/welcome/welAppBar'
-  import welFirstView from '../components/welcome/welFirstView.vue'
+  import welFirstView from '../components/welcome/welFirstView'
   import welAbout from '../components/welcome/welAbout'
   import welFeatures from '../components/welcome/welFeatures'
   import welStats from '../components/welcome/welStats'

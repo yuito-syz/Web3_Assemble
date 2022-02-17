@@ -1,29 +1,40 @@
 <template>
     <v-app-bar
         app
-        color="white"
-        height="100"
+        dark
         > 
-        <v-avatar
-            class="mr-3"
-            color="grey lighten-5"
-            size="70"
-        >
-            <v-img
-            contain
-            max-height="70%"
-            src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-            ></v-img>
+        <v-avatar>
+            <app-logo/>
         </v-avatar>
 
-        <v-toolbar-title class="font-weight-black headline">
-            VUETIFY
+        <v-toolbar-title>
+            goodbooking
         </v-toolbar-title>
+
+        <v-spacer />
+
+        <v-toolbar-items class="ml-2">
+        <v-btn
+            v-for="(menu, i) in menus"
+            :key="`menu-btn-${i}`"
+            text
+        >
+            {{ $t(`menus.${menu.title}`) }}
+        </v-btn>
+        </v-toolbar-items>
     </v-app-bar>
 </template>
 
 <script>
+import appLogo from '../ui/appLogo'
 export default {
+    components: { appLogo },
+    props: {
+        menus: {
+        type: Array,
+        default: () => []
+        }
+    },
     el: '#app'
 }
 </script>

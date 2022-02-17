@@ -63,6 +63,23 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/auth',
+    [
+      '@nuxtjs/i18n',
+      {
+        locales: [
+          { code: 'ja', name: 'Japanese', iso: 'ja_JP', file: 'ja.json' },
+          { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' }
+        ],
+        defaultLocale: 'en',
+        langDir: 'locales/', 
+        strategy: 'no_prefix',
+        vueI18n: {
+          fallbackLocale: 'en',
+        },
+        vueI18nLoader: true,
+        lazy: true,
+      }
+    ]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
