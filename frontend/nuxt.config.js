@@ -21,7 +21,9 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    '@mdi/font/css/materialdesignicons.css'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -37,7 +39,20 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/google-fonts',
   ],
+
+  googleFonts: {
+    families: {
+      Roboto: true,
+      'Josefin+Sans': true,
+      Lato: [100, 300],
+      Raleway: {
+        wght: [100, 400],
+        ital: [100]
+      },
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -87,6 +102,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
       dark: true,
       themes: {
