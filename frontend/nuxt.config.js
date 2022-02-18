@@ -10,21 +10,28 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - frontend',
-    title: 'frontend',
+    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  loading: { color: '#fff' },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    '~/assets/sass/main.scss'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~/plugins/axios.js'
+    // →'plugins/axios'かな？
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -34,7 +41,7 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
+    '@nuxtjs/vuetify'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -45,12 +52,56 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/auth',
+    '@nuxtjs/i18n'
   ],
+
+  publicRuntimeConfig: {
+    appName: process.env.APP_NAME
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://localhost:5000',
+  },
+
+  auth: {
+    redirect: {
+        login: '/users/login',
+        logout: '/',
+        callback: false,
+        home: '/users/profile',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/v1/auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/v1/auth/logout', method: 'post' },
+          user: false,
+        },
+      }
+    }
+  },
+
+  i18n: {
+    locales: [
+      { code: 'ja', name: 'Japanese', iso: 'ja_JP', file: 'ja.json' },
+      { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' }
+    ],
+    defaultLocale: 'ja',
+    langDir: 'locales/', 
+    strategy: 'no_prefix',
+    vueI18n: {
+      fallbackLocale: 'ja',
+      silentFallbackWarn: true,
+      messages: {
+        ja: require('./locales/ja.json'),
+        en: require('./locales/en.json')
+      }
+    },
+    vueI18nLoader: true,
+    lazy: true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -65,7 +116,8 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ['~/assets/sass/variables.scss'],
+    treeShake: true,
     theme: {
       dark: true,
       themes: {
@@ -78,6 +130,15 @@ export default {
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
         },
+        light: {
+          primary: '4080BE',
+          info: '4FC1E9',
+          success: '44D69E',
+          warning: 'FEB65E',
+          error: 'FB8678',
+          background: 'f6f6f4',
+          myblue: '1867C0'
+        }
       },
     },
   },
