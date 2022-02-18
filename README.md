@@ -22,8 +22,8 @@
 |  フロントエンド  | バックエンド | インフラ |
 | ---- | ---- | ---- |
 |  HTML / CSS / JavaScript  |  Ruby 3.1.0  | Docker |
-|  Vue3 + Typescript  |  Rails 6.1.4  | CircleCI |
-|  Tailwind CSS / Vuetify  |  Rspec  | AWS / Terraform |
+|  Nuxt  |  Rails 6.1.4  | CircleCI |
+|  Vuetify  |  Rspec  | AWS |
 
 ## 工夫した点
 ## 機能一覧
