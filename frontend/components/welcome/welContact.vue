@@ -1,79 +1,131 @@
 <template>
-    <v-sheet
-        id="contact"
-        color="#333333"
-        dark
-        tag="section"
-        tile
+  <v-row
+    justify="center"
+  >
+    <v-col
+      cols="12"
+      sm="10"
+      md="8"
+    >
+      <v-form
+        ref="contact"
+        v-model="isValid"
       >
-        <div class="py-12"></div>
-
         <v-container>
-          <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Contact Me</h2>
+          <v-row>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <v-text-field
+                v-model="name"
+                :rules="nameRules"
+                :disabled="sentIt"
+                label="名前(必須)"
+                outlined
+              />
+            </v-col>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <v-text-field
+                v-model="email"
+                :rules="emailRules"
+                :disabled="sentIt"
+                label="メールアドレス(必須)"
+                outlined
+                validate-on-blur
+              />
+            </v-col>
+          </v-row>
 
-          <v-responsive
-            class="mx-auto mb-12"
-            width="56"
+          <v-textarea
+            v-model="contents"
+            :rules="contentRules"
+            :disabled="sentIt"
+            label="お問合せの内容をお聞かせください(必須)"
+            rows="5"
+            outlined
+            auto-grow
+          />
+
+          <v-btn
+            :disabled="!isValid || loading || sentIt"
+            :loading="loading"
+            color="primary"
+            class="mr-2"
+            @click="onSend"
           >
-            <v-divider class="mb-1"></v-divider>
+            送信する
+          </v-btn>
 
-            <v-divider></v-divider>
-          </v-responsive>
-
-          <v-theme-provider light>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  flat
-                  label="Name*"
-                  solo
-                ></v-text-field>
-              </v-col>
-
-              <v-col cols="12">
-                <v-text-field
-                  flat
-                  label="Email*"
-                  solo
-                ></v-text-field>
-              </v-col>
-
-              <v-col cols="12">
-                <v-text-field
-                  flat
-                  label="Subject*"
-                  solo
-                ></v-text-field>
-              </v-col>
-
-              <v-col cols="12">
-                <v-textarea
-                  flat
-                  label="Message*"
-                  solo
-                ></v-textarea>
-              </v-col>
-
-              <v-col
-                class="mx-auto"
-                cols="auto"
-              >
-                <v-btn
-                  color="accent"
-                  x-large
-                >
-                  Submit
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-theme-provider>
+          <v-btn
+            text
+            @click="formReset"
+          >
+            キャンセル
+          </v-btn>
+          <div class="grey--text">
+            <small>実際には送信されません</small>
+          </div>
         </v-container>
-
-        <div class="py-12"></div>
-      </v-sheet>
+      </v-form>
+    </v-col>
+    <v-snackbar
+      v-model="sentIt"
+      timeout="-1"
+      color="primary"
+    >
+      お問合せ内容が送信されました。メールアドレスへ担当者よりご連絡いたします。
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="formReset"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+  </v-row>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      isValid: false,
+      name: '',
+      nameRules: [
+        v => !!v || '名前を入力してください'
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'メールアドレスを入力してください',
+        v => /.+@.+\..+/.test(v) || 'メールアドレスが正しくありません'
+      ],
+      contents: '',
+      contentRules: [
+        v => !!v || 'お問合せ内容を入力してください'
+      ],
+      loading: false,
+      sentIt: false
+    }
+  },
+  methods: {
+    onSend () {
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+        this.sentIt = true
+      }, 1500)
+    },
+    formReset () {
+      this.sentIt = false
+      this.$refs.contact.reset()
+    }
+  }
 }
 </script>

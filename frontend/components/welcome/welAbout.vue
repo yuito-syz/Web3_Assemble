@@ -1,52 +1,68 @@
 <template>
-  <section id="about-me">
-        <div class="py-12"></div>
-
-        <v-container class="text-center">
-          <h2 class="display-2 font-weight-bold mb-3">ABOUT ME</h2>
-
-          <v-responsive
-            class="mx-auto mb-8"
-            width="56"
-          >
-            <v-divider class="mb-1"></v-divider>
-
-            <v-divider></v-divider>
-          </v-responsive>
-
-          <v-responsive
-            class="mx-auto title font-weight-light mb-8"
-            max-width="720"
-          >
-            Vuetify is the #1 component library for Vue.js and has been in active development since 2016. The goal of the project is to provide users with everything that is needed to build rich and engaging web applications using the Material Design specification. It accomplishes that with a consistent update cycle, Long-term Support (LTS) for previous versions, responsive community engagement, a vast ecosystem of resources and a dedication to quality components.
-          </v-responsive>
-
+  <div>
+    <v-card-title class="pb-8 text-subtitle-2 justify-center">
+      このアプリケーションの作り方は、下記URLに公開されています。
+    </v-card-title>
+    <v-card-title class="text-subtitle-2 justify-center">
+      「Rails6とNuxt.jsで作るユーザーJWT認証付きシングルページアプリケーション」
+    </v-card-title>
+    <v-card-text class="text-center">
+      <a
+        :href="blogUrl"
+        rel="nofollow"
+        target="_blank"
+        class="text-decoration-none"
+      >
+        {{ blogUrl }}
+      </a>
+    </v-card-text>
+    <v-card-title class="text-subtitle-2 justify-center">
+      採用している技術
+    </v-card-title>
+    <v-container
+      fluid
+      :style="{ maxWidth: '960px' }"
+    >
+      <v-row justify="space-around">
+        <div
+          v-for="(tec, i) in technologies"
+          :key="`tec-${i}`"
+          class="text-center pa-2"
+        >
           <v-avatar
-            class="elevation-12 mb-12"
-            size="128"
+            :color="tec.color"
+            size="80"
           >
-            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
-          </v-avatar>
-
-          <div></div>
-
-          <v-btn
-            color="grey"
-            href="https://vuetifyjs.com"
-            outlined
-            large
-          >
-            <span class="grey--text text--darken-1 font-weight-bold">
-              Vuetify Documentation
+            <span class="white--text">
+              {{ tec.name }}
             </span>
-          </v-btn>
-        </v-container>
-
-        <div class="py-12"></div>
-  </section>
+          </v-avatar>
+          <div class="pt-2 text-body-2 my-grey">
+            {{ tec.use }}
+          </div>
+          <div class="pt-2 text-body-2 my-grey">
+            {{ tec.v }}
+          </div>
+        </div>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      blogUrl: 'https://blog.cloud-acct.com/categories/udemy',
+      technologies: [
+        { name: 'Docker', v: 'v19.03+', use: '開発環境', color: '#2496ED' },
+        { name: 'Rails api', v: 'v6.0+', use: 'サーバーサイド', color: '#CC0000' },
+        { name: 'Postgre SQL', v: '', use: 'データベース', color: '#336791' },
+        { name: 'Nuxt.js spa', v: 'v2.13+', use: 'フロントエンド', color: '#00C48D' },
+        { name: 'Heroku', v: '', use: 'ホスティング', color: '#6762A6' },
+        { name: 'Vuetify', v: 'v2.3+', use: 'CSSフレームワーク', color: '#1867C0' }
+      ]
+    }
+  }
 }
-</script>
+</script>   
