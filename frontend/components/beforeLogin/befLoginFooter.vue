@@ -1,16 +1,39 @@
 <template>
-  <v-footer
-      class="justify-center"
-      color="#292929"
-      height="100"
+  <div :style="{ marginTop: `${height}px`}">
+    <v-footer
+      absolute
+      dark
+      color="black"
+      :height="height"
     >
-      <div class="title font-weight-light grey--text text--lighten-1 text-center">
-        &copy; {{ (new Date()).getFullYear() }} — Vuetify, LLC — Made with 💜 by John Leider
-      </div>
+      <v-col
+        cols="12"
+        class="py-0"
+      >
+        <div class="text-center text-body-2">
+          &copy;{{ copyRightYear }}
+          <strong>{{ appName }}</strong>
+        </div>
+      </v-col>
     </v-footer>
+  </div>
 </template>
 
 <script>
 export default {
+  data ({ $config: { appName } }) {
+    return {
+      appName,
+      height: 32
+    }
+  },
+  computed: {
+    copyRightYear () {
+      const beginningYear = 2020
+      const thisYear = new Date().getFullYear()
+      return (beginningYear < thisYear)
+        ? `${beginningYear} - ${thisYear}` : beginningYear
+    }
+  }
 }
 </script>
