@@ -2,3 +2,22 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+$material-light: (
+  'background': #f6f6f4
+);
+
+$grid-breakpoints: (
+  'ipad': 768px,
+  'mobile': 426px
+);
+
+$display-breakpoints: (
+  'ipad-and-down':
+  'only screen and (max-width: #{map-get($grid-breakpoints, 'ipad') - 1})',
+  'ipad-and-up':
+  'only screen and (min-width: #{map-get($grid-breakpoints, 'ipad')})',
+  'mobile-and-down':
+  'only screen and (max-width: #{map-get($grid-breakpoints, 'mobile') - 1})',
+  'mobile-and-up':
+  'only screen and (min-width: #{map-get($grid-breakpoints, 'mobile')})'
+);
