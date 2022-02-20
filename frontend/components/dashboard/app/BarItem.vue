@@ -2,8 +2,6 @@
   import { VHover, VListItem } from 'vuetify/lib'
 
   export default {
-    name: 'AppBarItem',
-
     render (h) {
       return h(VHover, {
         scopedSlots: {

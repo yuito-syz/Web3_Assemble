@@ -15,7 +15,7 @@
       @click="drawer = !drawer"
     />
 
-    <default-drawer-toggle class="hidden-sm-and-down" />
+    <drawer-toggle class="hidden-sm-and-down" />
 
     <v-toolbar-title
       class="font-weight-light text-h5"
@@ -24,52 +24,42 @@
 
     <v-spacer />
 
-    <default-search class="hidden-sm-and-down" />
+    <search class="hidden-sm-and-down" />
 
-    <default-go-home />
+    <go-home />
 
-    <default-notifications />
+    <notifications />
 
-    <default-account />
+    <account />
   </v-app-bar>
 </template>
 
 <script>
   // Utilities
-  import { get, sync } from 'vuex-pathify'
+  import { sync } from 'vuex-pathify'
+  import Account from '@/layouts/dashboard/widgets/Account'
+  import DrawerToggle from '@/layouts/dashboard/widgets/DrawerToggle'
+  import GoHome from '@/layouts/dashboard/widgets/GoHome'
+  import Notifications from '@/layouts/dashboard/widgets/Notifications'
+  import Search from '@/layouts/dashboard/widgets/Search'
+
+
 
   export default {
-    name: 'DefaultBar',
 
     components: {
-      DefaultAccount: () => import(
-        /* webpackChunkName: "default-account" */
-        './widgets/Account'
-      ),
-      DefaultDrawerToggle: () => import(
-        /* webpackChunkName: "default-drawer-toggle" */
-        './widgets/DrawerToggle'
-      ),
-      DefaultGoHome: () => import(
-        /* webpackChunkName: "default-go-home" */
-        './widgets/GoHome'
-      ),
-      DefaultNotifications: () => import(
-        /* webpackChunkName: "default-notifications" */
-        './widgets/Notifications'
-      ),
-      DefaultSearch: () => import(
-        /* webpackChunkName: "default-search" */
-        './widgets/Search'
-      ),
+      Account,
+      DrawerToggle,
+      GoHome,
+      Notifications,
+      Search
     },
 
     computed: {
       ...sync('app', [
         'drawer',
         'mini',
-      ]),
-      name: get('route/name'),
+      ])
     },
   }
 </script>
