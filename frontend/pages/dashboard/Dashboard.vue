@@ -192,11 +192,6 @@
 <script>
   // Utilities
   import { get } from 'vuex-pathify'
-  import Vue from 'vue'
-
-  const lineSmooth = Vue.chartist.Interpolation.cardinal({
-    tension: 0,
-  })
 
   export default {
     name: 'DashboardView',
