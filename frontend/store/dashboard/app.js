@@ -33,11 +33,6 @@ const state = {
       to: '/components/icons/',
     },
     {
-      title: 'Google Maps',
-      icon: 'mdi-map-marker',
-      to: '/maps/google/',
-    },
-    {
       title: 'Notifications',
       icon: 'mdi-bell',
       to: '/components/notifications/',
