@@ -187,7 +187,6 @@
             class="mb-3"
             color="grey darken-1"
             dark
-            href="https://vuetifyjs.com/components/api-explorer"
             rel="noopener"
             target="_blank"
           >
@@ -197,7 +196,6 @@
           <v-btn
             block
             color="info"
-            href="https://store.vuetifyjs.com/products/vuetify-material-dashboard-free"
             rel="noopener"
             target="_blank"
           >

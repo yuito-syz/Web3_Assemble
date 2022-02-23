@@ -19,7 +19,7 @@
 
     <v-toolbar-title
       class="font-weight-light text-h5"
-      v-text="name"
+      v-text="Dashboard"
     />
 
     <v-spacer />
@@ -46,6 +46,7 @@
 
 
   export default {
+    name: 'DefaultBar',
 
     components: {
       Account,
