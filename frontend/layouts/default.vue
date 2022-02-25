@@ -1,14 +1,33 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
-    </v-main>
+    <app-bar />
+
+    <drawer />
+
+    <view />
+
+    <footer />
+
+    <settings />
   </v-app>
 </template>
 
 <script>
-export default {
-}
+  import AppBar from '@/layouts/dashboard/AppBar'
+  import Drawer from '@/layouts/dashboard/Drawer'
+  import Footer from '@/layouts/dashboard/Footer'
+  import Settings from '@/layouts/dashboard/Settings'
+  import View from '@/layouts/dashboard/View'
+
+  export default {
+    name: 'DefaultLayout',
+
+    components: {
+      AppBar,
+      Drawer,
+      Footer,
+      Settings,
+      View
+    },
+  }
 </script>
