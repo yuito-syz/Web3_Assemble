@@ -6,13 +6,13 @@
     v-on="$listeners"
   >
     <template v-for="(item, i) in items">
-      <default-list-group
+      <list-group
         v-if="item.items"
         :key="`group-${i}`"
         :item="item"
       />
 
-      <default-list-item
+      <list-item
         v-else
         :key="`item-${i}`"
         :item="item"
@@ -22,12 +22,15 @@
 </template>
 
 <script>
+  import ListGroup from '@/layouts/dashboard/ListGroup'
+  import ListItem from '@/layouts/dashboard/ListItem'
+
   export default {
-    name: 'DefaultList',
+    name: 'List',
 
     components: {
-      DefaultListGroup: () => import('./ListGroup'),
-      DefaultListItem: () => import('./ListItem'),
+      ListGroup,
+      ListItem
     },
 
     props: {

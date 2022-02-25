@@ -1,6 +1,6 @@
 <template>
   <v-footer
-    id="default-footer"
+    id="footer"
     color="transparent"
     absolute
     app
@@ -15,7 +15,7 @@
   import Links from '@/components/dashboard/Links'
 
   export default {
-    name: 'DefaultFooter',
+    name: 'Footer',
 
     components: { Links },
   }

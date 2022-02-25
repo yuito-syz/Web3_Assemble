@@ -1,19 +1,17 @@
 <template>
-  <default-list
+  <list
     :items="items"
     class="mb-n2"
   />
 </template>
 
 <script>
+  import List from '@/layouts/dashboard/List'
   export default {
-    name: 'DefaultAccountSettings',
+    name: 'AccountSettings',
 
     components: {
-      DefaultList: () => import(
-        /* webpackChunkName: "default-list" */
-        '../List'
-      ),
+      List
     },
 
     data: () => ({

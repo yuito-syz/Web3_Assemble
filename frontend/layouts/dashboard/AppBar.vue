@@ -1,6 +1,6 @@
 <template>
   <v-app-bar
-    id="default-app-bar"
+    id="app-bar"
     app
     absolute
     class="v-bar--underline"
@@ -36,7 +36,7 @@
 
 <script>
   // Utilities
-  import { sync } from 'vuex-pathify'
+  import { get, sync } from 'vuex-pathify'
   import Account from '@/layouts/dashboard/widgets/Account'
   import DrawerToggle from '@/layouts/dashboard/widgets/DrawerToggle'
   import GoHome from '@/layouts/dashboard/widgets/GoHome'
@@ -60,7 +60,8 @@
       ...sync('app', [
         'drawer',
         'mini',
-      ])
+      ]),
+      name: get('route/name'),
     },
   }
 </script>

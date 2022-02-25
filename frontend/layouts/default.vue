@@ -13,19 +13,20 @@
 </template>
 
 <script>
-  import AppBar from '@/layouts/dashboard/Appbar'
+  import AppBar from '@/layouts/dashboard/AppBar'
   import Drawer from '@/layouts/dashboard/Drawer'
   import Footer from '@/layouts/dashboard/Footer'
-  import Setting from '@/layouts/dashboard/Settings'
+  import Settings from '@/layouts/dashboard/Settings'
   import View from '@/layouts/dashboard/View'
 
   export default {
+    name: 'DefaultLayout',
 
     components: {
       AppBar,
       Drawer,
       Footer,
-      Setting,
+      Settings,
       View
     },
   }

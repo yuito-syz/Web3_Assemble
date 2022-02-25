@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    id="default-drawer"
+    id="drawer"
     v-model="drawer"
     :dark="dark"
     :right="$vuetify.rtl"
@@ -22,11 +22,11 @@
     </template>
 
     <div class="px-2">
-      <default-drawer-header />
+      <drawer-header />
 
       <v-divider class="mx-3 mb-2" />
 
-      <default-list :items="items" />
+      <list :items="items" />
     </div>
 
     <template #append>
@@ -62,19 +62,15 @@
 <script>
   // Utilities
   import { get, sync } from 'vuex-pathify'
+  import DrawerHeader from '@/layouts/dashboard/widgets/DrawerHeader'
+  import List from '@/layouts/dashboard/List'
 
   export default {
-    name: 'DefaultDrawer',
+    name: 'Drawer',
 
     components: {
-      DefaultDrawerHeader: () => import(
-        /* webpackChunkName: "default-drawer-header" */
-        './widgets/DrawerHeader'
-      ),
-      DefaultList: () => import(
-        /* webpackChunkName: "default-list" */
-        './List'
-      ),
+      DrawerHeader,
+      List
     },
 
     computed: {
@@ -97,7 +93,7 @@
 </script>
 
 <style lang="sass">
-#default-drawer
+#drawer
   .v-list-item
     margin-bottom: 8px
 

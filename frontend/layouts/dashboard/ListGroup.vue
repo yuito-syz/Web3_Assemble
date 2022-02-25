@@ -25,13 +25,13 @@
     </template>
 
     <template v-for="(child, i) in item.items">
-      <default-list-group
+      <list-group
         v-if="child.items"
         :key="`sub-group-${i}`"
         :item="child"
       />
 
-      <default-list-item
+      <list-item
         v-if="!child.items"
         :key="`child-${i}`"
         :item="child"
@@ -43,12 +43,13 @@
 <script>
   // Utilities
   import { get } from 'vuex-pathify'
+  import ListItem from '@/layouts/dashboard/ListItem'
 
   export default {
-    name: 'DefaultListGroup',
+    name: 'ListGroup',
 
     components: {
-      DefaultListItem: () => import('./ListItem'),
+      ListItem
     },
 
     props: {
