@@ -2,7 +2,7 @@
   <div :style="{ marginTop: `${height}px`}">
     <v-footer
       absolute
-      dark
+      
       color="black"
       :height="height"
     >
