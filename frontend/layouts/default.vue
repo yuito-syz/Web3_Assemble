@@ -8,7 +8,6 @@
 
     <footer />
 
-    <settings />
   </v-app>
 </template>
 
@@ -16,7 +15,6 @@
   import AppBar from '@/layouts/dashboard/AppBar'
   import Drawer from '@/layouts/dashboard/Drawer'
   import Footer from '@/layouts/dashboard/Footer'
-  import Settings from '@/layouts/dashboard/Settings'
   import View from '@/layouts/dashboard/View'
 
   export default {
@@ -26,7 +24,6 @@
       AppBar,
       Drawer,
       Footer,
-      Settings,
       View
     },
   }
