@@ -7,7 +7,8 @@
 <script>
 export default {
   layout ({ store }) {
-    return store.state.loggedIn ? 'default' : 'welcome'
+    // return store.state.loggedIn ? 'default' : 'welcome'
+    return store.state.loggedIn ? 'loggedIn' : 'welcome'
   }
 }
 </script>
