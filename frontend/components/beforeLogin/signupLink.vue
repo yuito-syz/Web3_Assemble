@@ -6,7 +6,7 @@
     class="ml-2 font-weight-bold"
     to="/users/signup"
   >
-    {{ $t('pages.signup') }}
+    {{ $t('pages.users.signup') }}
   </v-btn>
 </template>
 
