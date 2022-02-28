@@ -1,5 +1,5 @@
 export const state = () => ({
-    loggedIn: true // layout/defailt.vueへ遷移する
+    loggedIn: false
   })
   
 export const getters = {}

@@ -42,6 +42,7 @@
 
 <script>
 export default {
+  layout: 'beforeLogin',
   name: 'App',
   auth: false,
   data() {

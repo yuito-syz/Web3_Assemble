@@ -1,6 +1,9 @@
 <template>
   <v-app>
-  
+    <wel-app-bar
+      :menus="menus"
+      :img-height="imgHeight"
+    />
 
     <v-img
       id="scroll-top"
@@ -65,7 +68,7 @@
 </template>
 
 <script>
-// import welAppBar from '~/components/welcome/welAppBar'
+import welAppBar from '~/components/welcome/welAppBar'
 import welAbout from '~/components/welcome/welAbout'
 import welProducts from '~/components/welcome/welProducts'
 import welPrice from '~/components/welcome/welPrice'
@@ -75,7 +78,7 @@ import befLoginFooter from '~/components/beforeLogin/befLoginFooter'
 
 export default {
   components: {
-    // welAppBar,
+    welAppBar,
     welAbout,
     welProducts,
     welPrice,
