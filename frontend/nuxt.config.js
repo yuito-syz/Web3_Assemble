@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -29,8 +30,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios.js',
-    '@/plugins/dashboard'
+    'plugins/axios',
+    '@/plugins/dashboard',
+    'plugins/myInject'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -53,7 +55,8 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/auth',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@nuxtjs/dotenv'
   ],
 
   publicRuntimeConfig: {

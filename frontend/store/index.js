@@ -1,6 +1,6 @@
 export const state = () => ({
-    loggedIn: false
-  })
+  loggedIn: true,
+})
   
 export const getters = {}
   
