@@ -15,7 +15,13 @@
       <ui-app-logo />
     </nuxt-link>
 
-    <ui-app-title />
+    <ui-app-title
+      class="hidden-mobile-and-down"
+    />
+
+    <breadcrumbs
+      v-if="notTopPage"
+    />
     <v-spacer />
 
     <v-menu
@@ -86,6 +92,11 @@ export default {
         { name: 'account-password', icon: 'mdi-lock-outline' },
         { name: 'logout', icon: 'mdi-logout-variant', divider: true }
       ]
+    }
+  },
+  computed: {
+    notTopPage () {
+      return this.$route.name !== 'index'
     }
   }
 }
