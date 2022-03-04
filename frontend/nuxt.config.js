@@ -30,7 +30,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    'plugins/axios',
+    '~/plugins/axios.js',
     '@/plugins/dashboard',
     'plugins/myInject'
   ],
@@ -79,8 +79,8 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/v1/auth/login', method: 'post', propertyName: 'token' },
-          logout: { url: '/api/v1/auth/logout', method: 'post' },
+          login: { url: '/api/auth/sign_in', method: 'post',propertyName: 'access_token'}, 
+          logout: { url: '/api/auth/sign_out', method: 'delete' },
           user: false,
         },
       }
