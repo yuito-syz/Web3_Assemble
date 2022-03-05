@@ -26,7 +26,7 @@
                 class="white--text"
                 @click="editEmail"
               >
-                保存する
+                更新する
               </v-btn>
             </v-card-actions>
           </v-form>
@@ -50,7 +50,7 @@ export default {
   methods: {
     editEmail() {
       this.$axios
-        .put('api/v1/auth', this.user, {
+        .put('api/auth', this.user, {
           headers: {
             'access-token': localStorage.getItem('access-token'),
             uid: localStorage.getItem('uid'),

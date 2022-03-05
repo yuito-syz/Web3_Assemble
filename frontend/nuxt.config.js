@@ -30,7 +30,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios.js',
+    { src: '~/plugins/axios.js', ssr: false },
     '@/plugins/dashboard',
     'plugins/myInject'
   ],
@@ -65,16 +65,15 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: 'http://localhost:5000',
   },
 
   auth: {
     redirect: {
-        login: '/users/login',
-        logout: '/',
+        login: '/users/login', //middleware:authを設定したURLにアクセスがあった場合の、リダイレクト先。
+        logout: '/', //ログアウト後のリダイレクト先
         callback: false,
-        home: '/users/profile',
+        home: '/', ///ログイン後のリダイレクト先。
     },
     strategies: {
       local: {
@@ -85,6 +84,10 @@ export default {
         },
       }
     }
+  },
+
+  router: {
+    middleware: ['auth']
   },
 
   i18n: {

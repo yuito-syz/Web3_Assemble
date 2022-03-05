@@ -1,6 +1,8 @@
 <template>
   <v-container>
     <v-card width="400px" class="mx-auto mt-5">
+      <Notification :message="error" v-if="error"/>
+
       <v-card-title>
         <h1 class="display-1">
           新規登録
@@ -29,7 +31,7 @@
             <v-btn
               color="light-green darken-1"
               class="white--text"
-              @click="registerUser"
+              @click="signup"
             >
               新規登録
             </v-btn>
@@ -55,11 +57,24 @@ export default {
     }
   },
   methods: {
-    registerUser() {
-      this.$axios.post('/api/v1/auth', this.user).then((response) => {
-        window.location.href = '/users/comfirmation'
-      })
-    },
+    async signup() {
+      try{
+        await this.$axios.post('/api/auth',{
+            name: this.name,
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.password_confirmation
+        })    
+        await this.$auth.loginWith('local', {
+          data: {
+            password: this.password,
+            email: this.email
+          },
+        })    
+      }catch(e){
+        this.error = e.response.data.errors.full_messages
+      }
+    }
   },
 }
 </script>
