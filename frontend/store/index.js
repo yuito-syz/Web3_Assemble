@@ -1,5 +1,5 @@
 export const state = () => ({
-  loggedIn: true,
+  loggedIn: false,
   styles: {
     beforeLogin: {
       appBarHeight: 56

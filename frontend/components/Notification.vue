@@ -1,9 +1,9 @@
 <template>
-  <alert show variant="danger">
+  <v-alert type="error">
     <div v-for="m in message" :key="m.id">
       <span>{{ m }}</span>
     </div>
-  </alert>
+  </v-alert>
 </template>
 
 <script>

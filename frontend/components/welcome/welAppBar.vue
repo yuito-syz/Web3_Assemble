@@ -61,14 +61,7 @@
 </template>
 
 <script>
-import loginLink from '~/components/beforeLogin/loginLink'
-import signupLink from '~/components/beforeLogin/signupLink'
-
 export default {
-  components: {
-    loginLink,
-    signupLink
-  },
   props: {
     menus: {
       type: Array,

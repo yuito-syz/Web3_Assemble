@@ -23,7 +23,7 @@
             <v-btn
               color="light-green darken-1"
               class="white--text"
-              @click="loginWithAuthModule"
+              @click="login"
             >
               ログイン
             </v-btn>
@@ -46,27 +46,21 @@ export default {
     }
   },
   methods: {
-    async loginWithAuthModule() {
-      await this.$auth
-        .loginWith('local', {
-          data: {
-            email: this.email,
-            password: this.password,
-          },
-        })
-        .then(
-          (response) => {
-            localStorage.setItem('access-token', response.headers['access-token'])
-            localStorage.setItem('client', response.headers.client)
-            localStorage.setItem('uid', response.headers.uid)
-            localStorage.setItem('token-type', response.headers['token-type'])
-            return response
-          },
-          (error) => {
-            return error
-          }
-        )
-    },
+    async login() {
+      await this.$auth.loginWith('local', {
+        data: {
+          password: this.password,
+          email: this.email
+        }
+      })
+      .then(
+        (response) => {
+        },
+        (error) => {
+          this.error = error.response.data.errors
+        }
+      )
+    }
   },
 }
 </script>
