@@ -9,11 +9,9 @@
     <app-logo
       @click.native="goTo('scroll-top')"
     />
-    <v-toolbar-title
+    <app-title
       class="hidden-mobile-and-down"
-    >
-      {{ appName }}
-    </v-toolbar-title>
+    />
 
     <v-spacer />
 
@@ -29,8 +27,8 @@
       </v-btn>
     </v-toolbar-items>
 
-    <signup-link />
-    <login-link />
+    <v-btn v-if="!this.$auth.loggedIn" to="/users/signup">サインアップ</v-btn>
+    <v-btn v-if="!this.$auth.loggedIn" to="/users/login">ログイン</v-btn>
 
     <v-menu
       bottom
@@ -63,14 +61,7 @@
 </template>
 
 <script>
-import loginLink from '~/components/beforeLogin/loginLink'
-import signupLink from '~/components/beforeLogin/signupLink'
-
 export default {
-  components: {
-    loginLink,
-    signupLink
-  },
   props: {
     menus: {
       type: Array,
@@ -81,9 +72,8 @@ export default {
       default: 0
     }
   },
-  data ({ $config: { appName }, $store }) {
+  data ({ $store }) {
     return {
-      appName,
       scrollY: 0,
       appBarHeight: $store.state.styles.beforeLogin.appBarHeight
     }

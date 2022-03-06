@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -29,8 +30,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios.js',
-    '@/plugins/dashboard'
+    { src: '~/plugins/axios.js', ssr: false },
+    '@/plugins/dashboard',
+    'plugins/myInject'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -53,7 +55,8 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/auth',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@nuxtjs/dotenv'
   ],
 
   publicRuntimeConfig: {
@@ -62,26 +65,29 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: 'http://localhost:5000',
   },
 
   auth: {
     redirect: {
-        login: '/users/login',
-        logout: '/',
+        login: '/users/login', //middleware:authを設定したURLにアクセスがあった場合の、リダイレクト先。
+        logout: '/', //ログアウト後のリダイレクト先
         callback: false,
-        home: '/users/profile',
+        home: '/', ///ログイン後のリダイレクト先。
     },
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/v1/auth/login', method: 'post', propertyName: 'token' },
-          logout: { url: '/api/v1/auth/logout', method: 'post' },
+          login: { url: '/api/auth/sign_in', method: 'post',propertyName: 'access_token'}, 
+          logout: { url: '/api/auth/sign_out', method: 'delete' },
           user: false,
         },
       }
     }
+  },
+
+  router: {
+    middleware: ['auth']
   },
 
   i18n: {

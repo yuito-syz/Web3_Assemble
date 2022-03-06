@@ -1,9 +1,10 @@
 <template>
   <v-app>
-    <logged-in-header />
+    <bef-login-app-bar />
     <v-main>
       <nuxt />
     </v-main>
+    <bef-login-footer />
   </v-app>
 </template>
 

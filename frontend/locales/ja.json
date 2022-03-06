@@ -11,8 +11,24 @@
     }
   },
   
-  "title": {
+  "pages": {
     "signup": "会員登録",
-    "login": "ログイン"
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "account": {
+      "settings": "アカウント設定",
+      "password": "パスワード変更"
+    }
+  },
+  
+  "project": {
+    "id": {
+      "dashboard": "ダッシュボード",
+      "layouts": "レイアウト",
+      "pages": "ページ",
+      "components": "コンポーネント",
+      "settings": "設定",
+      "help": "ヘルプ"
+    }
   }
 }

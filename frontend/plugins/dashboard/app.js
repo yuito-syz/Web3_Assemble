@@ -8,7 +8,7 @@
 // Imports
 import Vue from 'vue'
 
-const requireComponent = require.context('@/components', true, /\.vue$/)
+const requireComponent = require.context('@/components/dashboard', true, /\.vue$/)
 
 for (const file of requireComponent.keys()) {
   const componentConfig = requireComponent(file)
