@@ -68,23 +68,19 @@
 </template>
 
 <script>
-import welAppBar from '~/components/welcome/welAppBar'
 import welAbout from '~/components/welcome/welAbout'
 import welProducts from '~/components/welcome/welProducts'
 import welPrice from '~/components/welcome/welPrice'
 import welContact from '~/components/welcome/welContact'
 import welCompany from '~/components/welcome/welCompany'
-import befLoginFooter from '~/components/beforeLogin/befLoginFooter'
 
 export default {
   components: {
-    welAppBar,
     welAbout,
     welProducts,
     welPrice,
     welContact,
     welCompany,
-    befLoginFooter
   },
   data () {
     return {

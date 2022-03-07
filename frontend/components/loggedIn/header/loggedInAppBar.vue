@@ -12,10 +12,10 @@
       to="/"
       class="text-decoration-none"
     >
-      <ui-app-logo />
+      <app-logo />
     </nuxt-link>
 
-    <ui-app-title
+    <app-title
       class="hidden-mobile-and-down"
     />
 

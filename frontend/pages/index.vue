@@ -117,7 +117,7 @@
 
 export default {
   layout ({ store }) {
-    return store.state.loggedIn ? 'loggedIn' : 'welcome'
+    return store.state.loggedIn ? 'default' : 'welcome'
   },
   data () {
     return {

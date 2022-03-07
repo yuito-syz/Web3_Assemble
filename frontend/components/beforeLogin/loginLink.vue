@@ -3,9 +3,9 @@
     text
     class="ml-2 font-weight-bold"
     color="black"
-    to="/users/login"
+    to="/login"
   >
-   {{ $t('pages.users.login') }}
+   {{ $t('pages.login') }}
   </v-btn>
 </template>
 
