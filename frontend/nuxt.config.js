@@ -73,24 +73,6 @@ export default {
     baseURL: 'http://localhost:5000',
   },
 
-  auth: {
-    redirect: {
-        login: '/users/login', //middleware:authを設定したURLにアクセスがあった場合の、リダイレクト先。
-        logout: '/', //ログアウト後のリダイレクト先
-        callback: false,
-        home: '/', ///ログイン後のリダイレクト先。
-    },
-    strategies: {
-      local: {
-        endpoints: {
-          login: { url: '/api/auth/sign_in', method: 'post',propertyName: 'access_token'}, 
-          logout: { url: '/api/auth/sign_out', method: 'delete' },
-          user: false,
-        },
-      }
-    }
-  },
-
   i18n: {
     locales: [
       { code: 'ja', name: 'Japanese', iso: 'ja_JP', file: 'ja.json' },

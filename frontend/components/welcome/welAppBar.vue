@@ -27,8 +27,8 @@
       </v-btn>
     </v-toolbar-items>
 
-    <before-login-signup-link />
-    <before-login-login-link />
+    <signup-link />
+    <login-link />
 
     <v-menu
       bottom
