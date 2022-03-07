@@ -48,7 +48,6 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>
-              <!-- TODO -->
               ユーザー名が表示されます
             </v-list-item-subtitle>
           </v-list-item-content>
