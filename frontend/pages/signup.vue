@@ -6,9 +6,15 @@
       <v-form
         v-model="isValid"
       >
-        <user-form-name />
-        <user-form-email />
-        <user-form-password />
+        <user-form-name 
+          :name.sync="params.user.name"
+        />
+        <user-form-email
+          :email.sync="params.user.email"
+        />
+        <user-form-password
+          :password.sync="params.user.password"
+        />
 
         <v-btn
           :disabled="!isValid"
@@ -20,6 +26,10 @@
         </v-btn>
 
       </v-form>
+
+      <v-card-text>
+        {{ params }}
+      </v-card-text>
     </template>
   </bef-login-form-card>
 </template>
@@ -30,7 +40,8 @@ export default {
   
   data () {
     return {
-      isValid: false
+      isValid: false,
+      params: { user: { name: '', email: '', password: '' } }
     }
   }
 }
