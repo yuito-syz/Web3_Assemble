@@ -86,10 +86,6 @@ export default {
     }
   },
 
-  router: {
-    middleware: ['auth']
-  },
-
   i18n: {
     locales: [
       { code: 'ja', name: 'Japanese', iso: 'ja_JP', file: 'ja.json' },
