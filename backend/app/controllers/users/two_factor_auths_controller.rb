@@ -1,6 +1,4 @@
-class Users::TwoFactorAuthsController < ApplicationController
-    before_action :authenticate_user!
-  
+class Users::TwoFactorAuthsController < ApplicationController  
     def show; end
   
     def create

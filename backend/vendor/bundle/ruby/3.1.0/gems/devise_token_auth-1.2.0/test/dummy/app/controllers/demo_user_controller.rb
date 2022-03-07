@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class DemoUserController < ApplicationController
-  before_action :authenticate_user!
 
   def members_only
     render json: {
