@@ -32,6 +32,9 @@ export const actions = {
   login ({ commit }) {
     commit('setLoggedIn', true)
   },
+  logout ({ commit }) {
+    commit('setLoggedIn', false)
+  },
   getCurrentProject ({ state, commit }, params) {
     const currentProject = state.projects.find(project => project.id === Number(params.id))
     commit('setCurrentProject', currentProject)
