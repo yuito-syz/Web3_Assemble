@@ -7,7 +7,8 @@ class User < ApplicationRecord
     validates :password, presence: true,
                         length: { minimum: 8 },
                         format: {
-                            with: VALID_PASSWORD_REGEX
+                            with: VALID_PASSWORD_REGEX,
+                            message: :invalid_password
                         },
                         allow_nil: true
 end
