@@ -1,6 +1,12 @@
 <template>
   <div id="logged-in-home">
     <v-parallax>
+      <v-img
+        :src="homeImg"
+        alt="homeImg"
+        :aspect-ratio="16/9"
+        gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
+      >
         <v-container
           fill-height
         >
@@ -75,6 +81,7 @@
             </v-col>
           </v-row>
         </v-container>
+      </v-img>
     </v-parallax>
     <v-container>
       <v-row justify="center">
@@ -114,6 +121,7 @@
 </template>
 
 <script>
+import homeImg from '~/assets/images/loggedIn/home.png'
 
 export default {
   layout ({ store }) {
@@ -121,6 +129,7 @@ export default {
   },
   data () {
     return {
+      homeImg,
       container: {
         sm: 10,
         md: 8
@@ -158,7 +167,6 @@ export default {
 }
 </script>
 
-<!-- css 追加 -->
 <style lang="scss">
 #logged-in-home {
   .v-parallax__content {
