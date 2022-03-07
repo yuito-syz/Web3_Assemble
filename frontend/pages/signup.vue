@@ -1,7 +1,7 @@
 <template>
   <bef-login-form-card>
     <template
-      #form-card-content
+      v-slot:form-card-content
     >
       <v-form
         v-model="isValid"
@@ -28,10 +28,6 @@
         </v-btn>
 
       </v-form>
-
-      <v-card-text>
-        {{ params }}
-      </v-card-text>
     </template>
   </bef-login-form-card>
 </template>

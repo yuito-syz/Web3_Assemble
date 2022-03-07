@@ -27,8 +27,8 @@
       </v-btn>
     </v-toolbar-items>
 
-    <v-btn v-if="!this.$auth.loggedIn" to="/users/signup">サインアップ</v-btn>
-    <v-btn v-if="!this.$auth.loggedIn" to="/users/login">ログイン</v-btn>
+    <before-login-signup-link />
+    <before-login-login-link />
 
     <v-menu
       bottom
