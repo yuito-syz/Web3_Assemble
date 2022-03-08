@@ -60,6 +60,7 @@ export default {
     },
     async authSuccessful (response) {
       await this.$auth.login(response)
+      this.$router.push(this.$store.state.rememberRoute)
     },
     authFailure ({ response }) {
       console.log(response)

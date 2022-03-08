@@ -124,6 +124,7 @@
 import homeImg from '~/assets/images/loggedIn/home.png'
 
 export default {
+  middleware: 'authenticator',
   layout ({ $auth }) {
     return $auth.loggedIn ? 'loggedIn' : 'welcome'
   },
