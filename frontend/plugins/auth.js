@@ -43,6 +43,18 @@ class Authentication {
         return new Date().getTime() < this.getExpire()
     }
 
+    get user () {
+        return this.store.state.current.user || {}
+    }
+    
+    isUserPresent () {
+        return ('id' in this.user)
+    }
+    
+    get loggedIn () {
+        return this.isAuthenticated() && this.isUserPresent()
+    }
+
     login ({ exp, user }) {
         this.setStorage(exp)
         this.store.dispatch('getCurrentUser', user)
