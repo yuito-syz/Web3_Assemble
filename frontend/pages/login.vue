@@ -64,9 +64,9 @@ export default {
       this.$router.push(this.$store.state.rememberRoute)
     },
     authFailure ({ response }) {
-      if (response.status === 404) {
-        this.$store.dispatch('getToast', { msg: 'ユーザーが見つかりません😷', timeout: -1  })
-      }
+      return (response.status === 404)
+        ? this.$store.dispatch('getToast', { msg: 'ユーザーが見つかりません😷' })
+        : this.$my.errorHandler(response)
     }
   }
 }

@@ -30,5 +30,11 @@
       "settings": "設定",
       "help": "ヘルプ"
     }
+  },
+  
+  "error": {
+    "Unauthorized": "認証に失敗しました",
+    "This page could not be found": "ページが見つかりません",
+    "Network Error": "サーバーで問題が発生しました"
   }
 }
