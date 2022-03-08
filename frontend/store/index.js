@@ -6,6 +6,7 @@ export const state = () => ({
     }
   },
   current: {
+    user: null,
     project: null
   },
   projects: [
@@ -25,6 +26,9 @@ export const mutations = {
   },
   setCurrentProject (state, payload) {
     state.current.project = payload
+  },
+  setCurrentUser (state, payload) {
+    state.current.user = payload
   }
 }
   
@@ -38,5 +42,8 @@ export const actions = {
   getCurrentProject ({ state, commit }, params) {
     const currentProject = state.projects.find(project => project.id === Number(params.id))
     commit('setCurrentProject', currentProject)
+  },
+  getCurrentUser ({ commit }, user) {
+    commit('setCurrentUser', user)
   }
 }
