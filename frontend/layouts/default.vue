@@ -9,5 +9,6 @@
 
 <script>
 export default {
+  middleware: ['authenticator', 'getProjects']
 }
 </script>

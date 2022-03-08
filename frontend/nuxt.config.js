@@ -30,9 +30,10 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/axios.js', ssr: false },
-    '@/plugins/dashboard',
-    'plugins/myInject'
+    'plugins/auth',
+    'plugins/axios',
+    'plugins/myInject',
+    'plugins/nuxtClientInit'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -65,12 +66,14 @@ export default {
   ],
 
   publicRuntimeConfig: {
-    appName: process.env.APP_NAME
+    appName: process.env.APP_NAME,
+    cryptoKey: process.env.CRYPTO_KEY
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'http://localhost:5000',
+    credentials: true
   },
 
   i18n: {
