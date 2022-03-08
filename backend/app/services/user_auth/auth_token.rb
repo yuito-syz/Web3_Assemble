@@ -17,6 +17,10 @@ module UserAuth
       end
     end
 
+    def entity_for_user
+      User.find @payload["sub"]
+    end
+
     private
 
       def secret_key
