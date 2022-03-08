@@ -10,8 +10,6 @@ gem 'activestorage-validator'
 gem 'bcrypt'
 gem 'faker'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
-gem 'bootstrap-sass'
 gem 'puma'
 gem 'sass-rails'
 gem 'webpacker'
@@ -26,6 +24,9 @@ gem 'net-imap', require: false
 gem 'bootsnap', require: false
 gem 'dotenv-rails'
 gem 'rack-cors'
+gem 'jwt'
+gem 'hirb'
+gem 'hirb-unicode-steakknife'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -39,6 +40,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'pry-rails'
 end
 
 group :development do
