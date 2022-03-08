@@ -18,6 +18,11 @@ export const state = () => ({
   rememberRoute: {
     name: 'index',
     params: {}
+  },
+  toast: {
+    msg: null,
+    color: 'error',
+    timeout: 4000
   }
 })
   
@@ -32,6 +37,9 @@ export const mutations = {
   },
   setRememberRoute (state, payload) {
     state.rememberRoute = payload
+  },
+  setToast (state, payload) {
+    state.toast = payload
   }
 }
   
@@ -46,5 +54,10 @@ export const actions = {
   getRememberRoute ({ commit }, route) {
     route = route || { name: 'index', params: {} }
     commit('setRememberRoute', { name: route.name, params: route.params })
+  },
+  getToast ({ commit }, toast) {
+    toast.color = toast.color || 'error'
+    toast.timeout = toast.timeout || 4000
+    commit('setToast', toast)
   }
 }

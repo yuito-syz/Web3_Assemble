@@ -1,6 +1,7 @@
 <template>
   <bef-login-form-card>
   <template v-slot:form-card-content>
+    <toaster />
     <v-form
       ref="form"
       v-model="isValid"
@@ -63,7 +64,9 @@ export default {
       this.$router.push(this.$store.state.rememberRoute)
     },
     authFailure ({ response }) {
-      console.log(response)
+      if (response.status === 404) {
+        this.$store.dispatch('getToast', { msg: 'ユーザーが見つかりません😷', timeout: -1  })
+      }
     }
   }
 }
