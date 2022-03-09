@@ -1,5 +1,5 @@
 export default async ({ $auth, store, route, redirect }) => {
-  if (route.name === 'index' && !$auth.isUserPresent()) {
+  if (route.name === 'index' && !$auth.isUserPresent) {
     return false
   }
 
@@ -12,12 +12,9 @@ export default async ({ $auth, store, route, redirect }) => {
     } else {
       store.dispatch('getRememberRoute', route)
     }
-
     store.dispatch('getToast', { msg })
-    
     return redirect('/login')
-
-    } else if (!$auth.isUserPresent()) {
-        return $auth.unauthError()
-  }
+  } else if (!$auth.isUserPresent()) {
+    return $auth.unauthError()
+  }　
 }

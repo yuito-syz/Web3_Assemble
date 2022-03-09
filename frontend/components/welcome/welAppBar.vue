@@ -26,7 +26,8 @@
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
-
+    
+    <guest-login-link />
     <signup-link />
     <login-link />
 
