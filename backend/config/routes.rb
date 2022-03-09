@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'relationships/followings'
+      get 'relationships/followers'
+    end
+  end
     namespace :api do
         namespace :v1 do
             resources :users, only:[] do
@@ -9,6 +15,11 @@ Rails.application.routes.draw do
                 delete :destroy, on: :collection
             end
 
+            resource :relationships, only: [:create, :destroy] do
+              get 'followings' => 'relationships#followings', as: 'followings'
+              get 'followers' => 'relationships#followers', as: 'followers'
+            end
+            
             resources :guests, only: [:create]
             resources :projects, only: [:index]
             resources :posts
