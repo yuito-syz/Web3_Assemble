@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
             resources :guests, only: [:create]
             resources :projects, only: [:index]
+            resources :posts
         end
     end
 end
