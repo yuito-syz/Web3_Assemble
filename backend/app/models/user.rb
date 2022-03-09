@@ -19,7 +19,7 @@ class User < ApplicationRecord
                         allow_nil: true
     class << self
         def find_activated(email)
-        find_by(email: email, activated: true)
+            find_by(email: email, activated: true)
         end
     end
 
