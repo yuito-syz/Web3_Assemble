@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :projects, only: [:index]
       resources :posts
       resources :likes, only: [:index, :create, :destroy]
+      get 'search' => "searches#search"
     end
   end
 end
