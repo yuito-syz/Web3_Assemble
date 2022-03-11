@@ -30,13 +30,19 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/axios.js', ssr: false },
-    '@/plugins/dashboard',
-    'plugins/myInject'
+    'plugins/auth',
+    'plugins/axios',
+    'plugins/myInject',
+    'plugins/nuxtClientInit'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: [
+    {
+      path: '@/components/',
+      pathPrefix: false
+    }
+  ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -48,11 +54,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/auth',
     '@nuxtjs/i18n',
@@ -60,34 +63,14 @@ export default {
   ],
 
   publicRuntimeConfig: {
-    appName: process.env.APP_NAME
+    appName: process.env.APP_NAME,
+    cryptoKey: process.env.CRYPTO_KEY
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'http://localhost:5000',
-  },
-
-  auth: {
-    redirect: {
-        login: '/users/login', //middleware:authを設定したURLにアクセスがあった場合の、リダイレクト先。
-        logout: '/', //ログアウト後のリダイレクト先
-        callback: false,
-        home: '/', ///ログイン後のリダイレクト先。
-    },
-    strategies: {
-      local: {
-        endpoints: {
-          login: { url: '/api/auth/sign_in', method: 'post',propertyName: 'access_token'}, 
-          logout: { url: '/api/auth/sign_out', method: 'delete' },
-          user: false,
-        },
-      }
-    }
-  },
-
-  router: {
-    middleware: ['auth']
+    credentials: true
   },
 
   i18n: {

@@ -1,62 +1,65 @@
+require "validator/email_validator"
+
 class User < ApplicationRecord
-  TOKEN_VALIDATION_RESPONSE_ATTRS = [
-    :otp_required_for_login,
-    :id,
-    :provider,
-    :email,
-    :uid,
-    :name,
-    :nickname,
-    :image
-  ]
-  devise :two_factor_authenticatable,
-         :otp_secret_encryption_key => Rails.application.credentials.devise_two_factor[:ENCRYPTION_KEY]
+    include UserAuth::Tokenizable
+    before_validation :downcase_email
+    has_secure_password
 
-  # Include default devise modules.
-  devise :registerable,
-          :recoverable, :rememberable, :trackable, :validatable,
-          :omniauthable
-  include DeviseTokenAuth::Concerns::User
-  has_many :posts, dependent: :destroy
+    has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+    has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
-  has_many :microposts, dependent: :destroy
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                   foreign_key: "followed_id",
-                                   dependent:   :destroy
-  has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
-  attr_accessor :remember_token, :activation_token, :reset_token
-  has_many :likes, dependent: :destroy
-  
-  # ユーザーのステータスフィードを返す
-  def feed
-    following_ids = "SELECT followed_id FROM relationships
-                     WHERE follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id",  
-      following_ids: following_ids, user_id: id)
-  end
-  
-  # ユーザーをフォローする
-  def follow(other_user)
-    following << other_user
-  end
+    has_many :posts, dependent: :destroy
+    has_many :likes, dependent: :destroy
 
-  # ユーザーをフォロー解除する
-  def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
-  end
+    has_many :followings, through: :relationships, source: :followed
+    has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  # 現在のユーザーがフォローしてたらtrueを返す
-  def following?(other_user)
-    following.include?(other_user)
-  end
+    validates :name, presence: true,
+                   length: { maximum: 30, allow_blank: true }
+    validates :email, presence: true,
+                   email: { allow_blank: true }
+    VALID_PASSWORD_REGEX = /\A[\w\-]+\z/
+    validates :password, presence: true,
+                        length: { minimum: 8 },
+                        format: {
+                            with: VALID_PASSWORD_REGEX,
+                            message: :invalid_password
+                        },
+                        allow_nil: true
+    class << self
+        def find_activated(email)
+            find_by(email: email, activated: true)
+        end
+    end
 
-  # 省略
-  def token_validation_response
-    self.as_json(only: TOKEN_VALIDATION_RESPONSE_ATTRS)
-  end
+    def email_activated?
+        users = User.where.not(id: id)
+        users.find_activated(email).present?
+    end
 
+    def my_json
+        as_json(only: [:id, :name, :email, :created_at])
+    end
+
+    def follow(user_id)
+        relationships.create(followed_id: user_id)
+    end
+
+    def unfollow(user_id)
+        relationships.find_by(followed_id: user_id).destroy
+    end
+
+    def following?(user)
+        followings.include?(user)
+    end
+
+    def self.search(keyword)
+        where(["name like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"])
+    end
+
+    private
+    
+    def downcase_email
+      self.email.downcase! if email
+    end
 end

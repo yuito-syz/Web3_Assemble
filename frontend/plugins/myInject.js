@@ -1,6 +1,7 @@
 class MyInject {
-    constructor (app) {
-      this.app = app
+    constructor (ctx) {
+      this.app = ctx.app
+      this.error = ctx.error
     }
 
     pageTitle (routeName) {
@@ -9,7 +10,6 @@ class MyInject {
         return (typeof (title) === 'object') ? title.index : title
     }
 
-    // 日時フォーマット変換
     format (date) {
         const dateTimeFormat = new Intl.DateTimeFormat(
           'ja', { dateStyle: 'medium', timeStyle: 'short' }
@@ -17,12 +17,15 @@ class MyInject {
         return dateTimeFormat.format(new Date(date))
     }
     
-    // プロジェクトリンク
     projectLinkTo (id, name = 'project-id-dashboard') {
         return { name, params: { id } }
     }
+
+    errorHandler ({ status, statusText }) {
+        return this.error({ statusCode: status, message: statusText })
+    }
 }
   
-export default ({ app }, inject) => {
-    inject('my', new MyInject(app))
+export default ({ app, error }, inject) => {
+    inject('my', new MyInject(app, error))
 }

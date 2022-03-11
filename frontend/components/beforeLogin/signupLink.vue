@@ -4,9 +4,9 @@
     dark
     color="myblue"
     class="ml-2 font-weight-bold"
-    to="/users/signup"
+    to="/signup"
   >
-    {{ $t('pages.users.signup') }}
+    {{ $t('pages.signup') }}
   </v-btn>
 </template>
 

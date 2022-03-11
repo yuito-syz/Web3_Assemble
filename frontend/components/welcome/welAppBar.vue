@@ -26,9 +26,10 @@
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
-
-    <v-btn v-if="!this.$auth.loggedIn" to="/users/signup">サインアップ</v-btn>
-    <v-btn v-if="!this.$auth.loggedIn" to="/users/login">ログイン</v-btn>
+    
+    <guest-login-link />
+    <signup-link />
+    <login-link />
 
     <v-menu
       bottom
