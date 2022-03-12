@@ -73,6 +73,24 @@ export default {
     credentials: true
   },
 
+  auth: {
+    redirect: {
+        login: '/users/login',
+        logout: '/',
+        callback: false,
+        home: '/',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/v1/auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/v1/auth/logout', method: 'post' },
+          user: false,
+        },
+      }
+    }
+  },
+
   i18n: {
     locales: [
       { code: 'ja', name: 'Japanese', iso: 'ja_JP', file: 'ja.json' },
