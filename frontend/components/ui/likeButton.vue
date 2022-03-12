@@ -10,21 +10,15 @@
 </template>
 
 <script>
-// axios と rails-ujsのメソッドインポート
-import axios from 'axios'
-import { csrfToken } from 'rails-ujs'
-// CSRFトークンの取得とリクエストヘッダへの設定をしてくれます
-axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken()
-
 export default {
   // propsでrailsのviewからデータを受け取る
   props: ['userId', 'postId'],
   data() {
     return {
-      likeList: []  // いいね一覧を格納するための変数　{ id: 1, user_id: 1, post_id: 1 } がArrayで入る
+      likeList: []  // 例:{ id: 1, user_id: 1, post_id: 1 } 
     }
   },
-  // 算出プロパティ ここではlikeListが変更される度に、count、isLiked が再構築される (watchで監視するようにしても良いかも)
+  // 算出プロパティ ここではlikeListが変更される度に、count、isLiked が再構築される
   computed: {
     // いいね数を返す
     count() {
@@ -37,23 +31,23 @@ export default {
     }
   },
   // Vueインスタンスの作成・初期化直後に実行される
-  created: function() {
+  created() {
     this.fetchLikeByPostId().then(result => {
       this.likeList = result
     })
   },
   methods: {
     // rails側のindexアクションにリクエストするメソッド
-    fetchLikeByPostId: async function() {
-      const res = await axios.get(`/api/likes/?post_id=${this.postId}`)
+    async　fetchLikeByPostId() {
+      const res = await axios.get(`/api/v1/likes/?post_id=${this.postId}`)
       if (res.status !== 200) {
         // エラー処理
       }
       return res.data
     },
     // rails側のcreateアクションにリクエストするメソッド
-    registerLike: async function() {
-      const res = await axios.post('/api/likes', { post_id: this.postId })
+    async registerLike() {
+      const res = await axios.post('/api/v1/likes', { post_id: this.postId })
       if (res.status !== 201) {
         // エラー処理
       }
@@ -62,16 +56,16 @@ export default {
       })
     },
     // rails側のdestroyアクションにリクエストするメソッド
-    deleteLike: async function() {
+    async deleteLike() {
       const likeId = this.findLikeId()
-      const res = await axios.delete(`/api/likes/${likeId}`)
+      const res = await axios.delete(`/api/v1/likes/${likeId}`)
       if (res.status !== 200) {
         // エラー処理
       }
       this.likeList = this.likeList.filter(n => n.id !== likeId)
     },
     // ログインユーザがいいねしているlikeモデルのidを返す
-    findLikeId: function() {
+    findLikeId() {
       const like = this.likeList.find((like) => {
         return (like.user_id === this.userId)
       })
