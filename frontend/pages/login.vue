@@ -63,7 +63,7 @@ export default {
       await this.$auth.login(response)
       this.$router.push(this.$store.state.rememberRoute)
     },
-    authFailure ({ response }) {
+    async authFailure ({ response }) {
       return (response.status === 404)
         ? this.$store.dispatch('getToast', { msg: 'ユーザーが見つかりません😷' })
         : this.$my.errorHandler(response)
