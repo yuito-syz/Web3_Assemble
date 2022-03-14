@@ -3,15 +3,10 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      mount_devise_token_auth_for 'User', at: 'auth'
-      # resources :users, only:[] do
-      #     get :current_user, action: :show, on: :collection
-      # end
-
-      # resources :user_token, only: [:create] do
-      #     delete :destroy, on: :collection
-      # end
-
+      mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+        registrations: 'auth/registrations'
+      }
+  
       resource :relationships, only: [:create, :destroy] do
         get 'followings' => 'relationships#followings', as: 'followings'
         get 'followers' => 'relationships#followers', as: 'followers'

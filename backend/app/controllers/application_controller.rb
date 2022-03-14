@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::API
+    skip_before_action :verify_authenticity_token, raise: false, if: :devise_controller?
     include DeviseTokenAuth::Concerns::SetUserByToken
-    skip_before_action :verify_authenticity_token, if: :devise_controller?
-    ## include ActionController::Cookies
-    ## include UserAuth::Authenticator
 end

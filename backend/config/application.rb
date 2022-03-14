@@ -26,9 +26,23 @@ module App
     config.active_record.default_timezone = :utc
     config.i18n.default_locale = :ja
     config.add_autoload_paths_to_load_path = false
-    config.middleware.use ActionDispatch::Cookies
 
     config.autoload_paths += %W(#{config.root}/lib/validator)
+
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies # Required for all session management
+    config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+    config.middleware.use ActionDispatch::Flash
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+                 :headers => :any,
+                 :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                 :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
+    # config.action_controller.default_protect_from_forgery = true
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

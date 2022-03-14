@@ -1,13 +1,9 @@
 5.times do |n|
-    name = "user#{n}"
-    email = "#{name}@example.com"
-    user = User.find_or_initialize_by(email: email, activated: true)
-  
-    if user.new_record?
-      user.name = name
-      user.password = "localhost_password"
-      user.save!
-    end
+  User.create!(
+    email: "test#{n + 1}@test.com",
+    name: "テスト太郎#{n + 1}",
+    password: "localhost_password"
+  )
 end
   
 puts "users = #{User.count}"
