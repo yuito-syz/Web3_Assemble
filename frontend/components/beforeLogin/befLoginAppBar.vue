@@ -17,9 +17,7 @@
 
     <v-spacer />
 
-    <guest-login-link />
-    <signup-link />
-    <login-link />
+    
   </v-app-bar>
 </template>
 
