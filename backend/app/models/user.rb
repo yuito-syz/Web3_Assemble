@@ -1,8 +1,8 @@
 class User < ApplicationRecord
     # Include default devise modules.
-    devise :database_authenticatable, :registerable,
-            :recoverable, :rememberable, :trackable, :validatable,
-            :confirmable, :omniauthable
+    devise  :database_authenticatable, :registerable,
+            :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+            ## :confirmable
     include DeviseTokenAuth::Concerns::User
 
     has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
