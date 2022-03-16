@@ -1,18 +1,16 @@
 class User < ApplicationRecord
-    # Include default devise modules.
     devise  :database_authenticatable, :registerable,
             :recoverable, :rememberable, :trackable, :validatable, :omniauthable
             ## :confirmable
     include DeviseTokenAuth::Concerns::User
 
-    has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-    has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+    has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship",  dependent: :destroy
+    has_many :following, through: :following_relationships
+    has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
+    has_many :followers, through: :follower_relationships
 
     has_many :posts, dependent: :destroy
     has_many :likes, dependent: :destroy
-
-    has_many :followings, through: :relationships, source: :followed
-    has_many :followers, through: :reverse_of_relationships, source: :follower
 
     def my_json
         as_json(only: [:id, :name, :email, :created_at])
@@ -25,16 +23,16 @@ class User < ApplicationRecord
         end
     end
 
-    def follow(user_id)
-        relationships.create(followed_id: user_id)
-    end
-
-    def unfollow(user_id)
-        relationships.find_by(followed_id: user_id).destroy
-    end
-
     def following?(user)
-        followings.include?(user)
+        following_relationships.find_by(following_id: user.id)
+    end
+
+    def follow(user)
+        following_relationships.create!(following_id: user.id)
+    end
+
+    def unfollow(user)
+        following_relationships.find_by(following_id: user.id).destroy
     end
 
     def self.search(keyword)

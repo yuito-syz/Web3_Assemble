@@ -11,12 +11,14 @@ Rails.application.routes.draw do
         confirmations: "api/v1/auth/confirmations",
         passwords: "api/v1/auth/passwords"
       }
-  
-      resource :relationships, only: [:create, :destroy] do
-        get 'followings' => 'relationships#followings', as: 'followings'
-        get 'followers' => 'relationships#followers', as: 'followers'
+
+      resources :users do
+        member do
+         get :following, :followers
+        end
       end
-      
+  
+      resources :relationships, only: [:create, :destroy]
       resources :projects, only: [:index]
       resources :posts
       resources :likes, only: [:index, :create, :destroy]
