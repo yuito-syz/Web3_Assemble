@@ -19,7 +19,7 @@ export default {
   methods: {
     async guestLogin () {
       this.loading = true
-      await this.$axios.$post('/api/v1/guests')
+      await this.$axios.$post('/api/v1/auth/guest_sign_in')
         .then((res) => {
           this.$auth.login(res) 
           this.$router.push(this.$store.state.rememberRoute)
