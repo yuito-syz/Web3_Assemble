@@ -18,6 +18,13 @@ class User < ApplicationRecord
         as_json(only: [:id, :name, :email, :created_at])
     end
 
+    def self.guest
+        find_or_create_by!(email: "guest@example.com") do |user|
+          user.password = SecureRandom.urlsafe_base64
+          user.name = "ゲストユーザー"
+        end
+    end
+
     def follow(user_id)
         relationships.create(followed_id: user_id)
     end
