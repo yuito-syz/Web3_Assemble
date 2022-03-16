@@ -1,1 +1,0 @@
-json.otp_uri current_user.otp_provisioning_uri("service_name", issuer: "company_name")
