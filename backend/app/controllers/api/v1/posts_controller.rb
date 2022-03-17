@@ -7,15 +7,19 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def show
-    render json: { status: 'SUCCESS', message: 'Loaded the post', data: @post }
+    @post = Post.find_by(id: params[:id])
+
+    unless @post
+      render json: @post, status: 500
+    end
   end
 
   def create
-    post = Post.new(post_params)
+    post = Post.new((content: params[:post][:content]))
     if post.save
-      render json: { status: 'SUCCESS', data: post }
+      render json: '作成に成功しました', status: 200
     else
-      render json: { status: 'ERROR', data: post.errors }
+      render json: '作成に失敗しました', status: 500
     end
   end
 
