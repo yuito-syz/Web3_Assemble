@@ -29,6 +29,7 @@ gem 'hirb'
 gem 'hirb-unicode-steakknife'
 gem 'devise' 
 gem 'devise_token_auth'
+gem 'devise-i18n'
 gem 'omniauth'
 
 group :development, :test do
