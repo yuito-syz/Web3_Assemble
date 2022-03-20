@@ -6,18 +6,22 @@ class Api::V1::LikesController < ApplicationController
   end
 
   def create
-    current_user.likes.create!(likes_params)
-    head :created
+    post = Post.find(params[:post_id])
+    like = current_user.likes.new(post_id: post.id)
+    like.save
+    render json: post
   end
 
   def destroy
-    current_user.likes.find(params[:id]).destroy!
-    head :ok
+    post = Post.find(params[:post_id])
+    like = current_user.likes.find_by(post_id: post.id)
+    like.destroy
+    render json: post
   end
 
   private
 
-  def likes_params
-    params.require(:like).permit(:post_id)
-  end
+  # def likes_params
+  #   params.require(:like).permit(:post_id)
+  # end
 end

@@ -24,8 +24,8 @@ Rails.application.routes.draw do
       resources :projects, only: [:index]
       resources :posts do
         resources :comments, only:[:create, :destroy]
+        resources :likes, only: [:index, :create, :destroy]
       end
-      resources :likes, only: [:index, :create, :destroy]
       get 'search' => "searches#search"
     end
   end
