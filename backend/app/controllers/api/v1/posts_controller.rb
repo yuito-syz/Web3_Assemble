@@ -9,8 +9,15 @@ class Api::V1::PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
 
+    @comment = Comment.new
+    @comments = @post.comments.page(params[:page]).per(7).reverse_order
+
     unless @post
       render json: @post, status: 500
+    end
+
+    unless @comments
+      render json: @comments, status: 500
     end
   end
 
