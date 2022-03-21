@@ -2,8 +2,9 @@ class Api::V1::PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
 
   def index
-    posts = Post.order(created_at: :desc)
-    render json: { status: 'SUCCESS', message: 'Loaded posts', data: posts }
+    @posts = Post.published.page(params[:page]).reverse_order
+    @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    render json: @posts
   end
 
   def show
@@ -48,6 +49,10 @@ class Api::V1::PostsController < ApplicationController
     end
   end
 
+  def confirm
+    @posts = current_user.posts.draft.page(params[:page]).reverse_order
+  end
+
   private
 
   def set_post
@@ -55,6 +60,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def post_params
-    params.permit(:title, :body)
+    # params.permit(:title, :body)
+    params.require(:post).permit(:location, :text, :image, :status)
   end
 end
