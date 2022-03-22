@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      # namespace :auth do
-        mount_devise_token_auth_for 'User', at: 'auth', controllers: {
-          registrations: 'api/v1/auth/registrations',
-          sessions: "api/v1/auth/sessions",
-          confirmations: "api/v1/auth/confirmations",
-          passwords: "api/v1/auth/passwords"
-        }
+      devise_scope :api_v1_user do
+        post "users/guest_sign_in", to: "users/auth/sessions#guest_sign_in"
+      end
 
-        devise_scope :users do
-          post "api/v1/auth/guest_sign_in", to: "api/v1/auth/sessions#guest_sign_in"
-        end
-      # end　←このような書き方かも？
+      mount_devise_token_auth_for 'User', at: 'user/auth', controllers: {
+        registrations: 'api/v1/users/auth/registrations',
+        sessions: "api/v1/users/auth/sessions",
+        confirmations: "api/v1/users/auth/confirmations",
+        passwords: "api/v1/users/auth/passwords"
+      }
 
       resources :users do
         member do
