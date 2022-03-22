@@ -74,8 +74,9 @@ export default {
 
   auth: {
     redirect: {
-        login: '/users/login',
-        logout: '/',
+        login: '/users/login', // 未ログイン時にリダイレクトされる先のURL
+        logout: '/', // ログアウトした後にリダイレクトされる先のURL
+        guestlogin: '',
         callback: false,
         home: '/',
     },
@@ -85,7 +86,13 @@ export default {
           login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'token' },
           logout: { url: '/api/v1/auth/sign_out', method: 'post' },
           user: false,
-        },
+        }
+      },
+      guestlogin: {
+        endpoints: {
+          login: { url: '/api/v1/users/auth/guest_sign_in', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/v1/auth/sign_out', method: 'post' },
+        }
       }
     }
   },
