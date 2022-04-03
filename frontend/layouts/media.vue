@@ -1,10 +1,14 @@
 <template>
   <v-app>
-    <v-app-bar>
+    <v-app-bar
+      max-height="100"  
+    >
       <app-logo/>
       <app-title/>
+  
     </v-app-bar>
-    <v-row
+    <v-col>
+      <v-row
         justify="center"
       >
         <v-tabs
@@ -20,21 +24,54 @@
               {{ item }}
           </v-tab>
         </v-tabs>
+      </v-row>
+    </v-col>
+    <v-main>
+      <v-container>
+        <v-row>
+          <v-col
+            v-for="n in 12"
+            :key="n"
+            cols="3"
+          >
+            <v-card height="200"></v-card>
+          </v-col>
+          <v-col cols="2">
+            <v-sheet rounded="lg">
+              <v-list color="transparent">
+                <v-list-item
+                  v-for="n in 5"
+                  :key="n"
+                  link
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      List Item {{ n }}
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
 
-        <v-tabs-items v-model="tab">
-              <v-tab-item
-                  v-for="item in items"
-                  :key="item"
-              >
-                  <v-card
-                      flat
-                  >
-                  <v-card-text>{{ text }}</v-card-text>
-                  </v-card>
-              </v-tab-item>
-        </v-tabs-items>
-    </v-row>
-  
+                <v-divider class="my-2"></v-divider>
+
+                <v-list-item
+                  link
+                  color="grey lighten-4"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Refresh
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+
+    <v-divider></v-divider>
+
     <v-footer
       dark
       padless
