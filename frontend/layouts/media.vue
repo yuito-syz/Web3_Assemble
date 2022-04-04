@@ -2,67 +2,79 @@
   <v-app>
     <v-app-bar
       max-height="100"  
+      class="px-14"
     >
       <app-logo/>
       <app-title/>
   
     </v-app-bar>
-    <v-col>
-      <v-row
-        justify="center"
-      >
-        <v-tabs
-              v-model="tab"
-              background-color="transparent"
-              color="basil"
-              grow
-          >
-          <v-tab
-              v-for="item in items"
-              :key="item"
-          >
-              {{ item }}
-          </v-tab>
-        </v-tabs>
-      </v-row>
-    </v-col>
+    
     <v-main>
-      <v-container>
+      <v-container
+        class="pa-0 mb-10"
+      >
+        <v-col>
+          <v-row
+            justify="center"
+          >
+            <v-tabs
+                  v-model="tab"
+                  background-color="transparent"
+                  color="basil"
+                  grow
+                  class="mx-16, my-2"
+              >
+              <v-tab
+                  v-for="item in items"
+                  :key="item"
+              >
+                  {{ item }}
+              </v-tab>
+            </v-tabs>
+          </v-row>
+        </v-col>
         <v-row>
+          <v-col>
+            <v-card height="300"></v-card>
+          </v-col>
+        </v-row>
+        <v-row
+          justify="center"
+        >
           <v-col
-            v-for="n in 12"
+            v-for="n in 2"
             :key="n"
-            cols="3"
+            cols="6"
           >
             <v-card height="200"></v-card>
           </v-col>
-          <v-col cols="2">
+        </v-row>
+        <v-row>
+          <v-col>
             <v-sheet rounded="lg">
-              <v-list color="transparent">
-                <v-list-item
-                  v-for="n in 5"
-                  :key="n"
-                  link
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>
-                      List Item {{ n }}
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+              <v-list two-line>
+                <template v-for="n in 6">
+                  <v-list-item
+                    :key="n"
+                  >
+                    <v-list-item-avatar color="grey darken-1">
+                    </v-list-item-avatar>
 
-                <v-divider class="my-2"></v-divider>
+                    <v-list-item-content>
+                      <v-list-item-title>Message {{ n }}</v-list-item-title>
 
-                <v-list-item
-                  link
-                  color="grey lighten-4"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>
-                      Refresh
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+                      <v-list-item-subtitle>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique
+                      </v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+
+                  <v-divider
+                    v-if="n !== 6"
+                    :key="`divider-${n}`"
+                    inset
+                  ></v-divider>
+                </template>
               </v-list>
             </v-sheet>
           </v-col>
