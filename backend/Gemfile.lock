@@ -205,6 +205,7 @@ GEM
       net-protocol
       timeout
     net-ssh (6.1.0)
+    news-api (0.2.0)
     nio4r (2.5.8)
     nokogiri (1.13.1-x86_64-darwin)
       racc (~> 1.4)
@@ -405,6 +406,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
+  news-api
   omniauth
   pry-rails
   psych

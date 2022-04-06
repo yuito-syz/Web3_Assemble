@@ -27,7 +27,8 @@ Rails.application.routes.draw do
           get 'confirm'
         end
       end
-      get 'search' => "searches#search"
+      get 'search', to: "searches#search"
+      resources :news, only: :index
     end
   end
 end
