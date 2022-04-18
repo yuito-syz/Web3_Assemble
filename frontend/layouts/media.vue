@@ -79,6 +79,9 @@
             </v-sheet>
           </v-col>
         </v-row>
+        <v-col v-for="headline in headlines" :key="headline.id">
+          {{ headline.title }}
+        </v-col>
       </v-container>
     </v-main>
 
@@ -107,7 +110,7 @@
         </v-card-text>
 
         <v-card-text class="white--text pt-0">
-          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin.
+          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc.
         </v-card-text>
 
         <v-divider></v-divider>
@@ -134,7 +137,18 @@ export default {
         'mdi-twitter',
         'mdi-linkedin',
         'mdi-instagram',
-      ],
+      ]
+    }
+  },
+  async asyncData ({ $axios }) {
+    try {
+      const topHeadlines = await $axios.$get('/api/v1/news')
+      console.log('headline', topHeadlines.articles)
+      return {
+        headlines: topHeadlines.articles
+      }
+    } catch (e) {
+      console.log(e.message)
     }
   }
 }
