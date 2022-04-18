@@ -1,21 +1,13 @@
 class Api::V1::RelationshipsController < ApplicationController
   def create
-    current_user.follow(params[:user_id])
-    redirect_to request.referer
+    @user = User.find(params[:relationship][:following_id])
+    current_user.follow!(@user)
+    render json: @user
   end
 
   def destroy
-    current_user.unfollow(params[:user_id])
-    redirect_to request.referer  
-  end
-
-  def followings
-    user = User.find(params[:user_id])
-    @users = user.followings
-  end
-
-  def followers
-    user = User.find(params[:user_id])
-    @users = user.followers
+    @user = Relationship.find(params[:id]).following
+    current_user.unfollow!(@user)
+    render json: @user
   end
 end

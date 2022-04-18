@@ -27,6 +27,12 @@ gem 'rack-cors'
 gem 'jwt'
 gem 'hirb'
 gem 'hirb-unicode-steakknife'
+gem 'devise' 
+gem 'devise_token_auth'
+gem 'devise-i18n'
+gem 'omniauth'
+gem 'news-api'
+gem 'kimurai'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

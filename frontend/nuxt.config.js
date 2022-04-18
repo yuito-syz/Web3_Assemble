@@ -69,8 +69,32 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:5000',
-    credentials: true
+    baseURL: 'http://localhost:5000'
+  },
+
+  auth: {
+    redirect: {
+        login: '/users/login', // 未ログイン時にリダイレクトされる先のURL
+        logout: '/', // ログアウトした後にリダイレクトされる先のURL
+        guestlogin: '',
+        callback: false,
+        home: '/',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/v1/auth/sign_out', method: 'post' },
+          user: false,
+        }
+      },
+      guestlogin: {
+        endpoints: {
+          login: { url: '/api/v1/users/auth/guest_sign_in', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/v1/auth/sign_out', method: 'post' },
+        }
+      }
+    }
   },
 
   i18n: {
