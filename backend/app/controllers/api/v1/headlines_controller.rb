@@ -1,10 +1,10 @@
-class Api::V1::NewsController < ApplicationController
+class Api::V1::HeadlinesController < ApplicationController
   require 'news-api'
 
   def index
-    news = News.new(ENV['NEWS_API_KEY'])
-    @news = news.get_top_headlines(country: 'jp')
-    render json: @news
+    headlines = News.new(ENV['NEWS_API_KEY'])
+    @headlines = headlines.get_top_headlines(country: 'jp')
+    render json: @headlines
   end
 
   def web3

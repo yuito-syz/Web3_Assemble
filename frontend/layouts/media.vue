@@ -79,9 +79,9 @@
             </v-sheet>
           </v-col>
         </v-row>
-        <v-col v-for="headline in headlines" :key="headline.id">
+        <v-card v-for="headline in headlines" :key="headline.id">
           {{ headline.title }}
-        </v-col>
+        </v-card> 
       </v-container>
     </v-main>
 
@@ -90,35 +90,41 @@
     <v-footer
       dark
       padless
+      justify="center"
     >
-      <v-card
-        flat
-        tile
-        class="indigo lighten-1 white--text text-center"
+      <v-col
+        class="text-center"
+        cols="12"
       >
-        <v-card-text>
-          <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4 white--text"
-            icon
-          >
-            <v-icon size="24px">
-              {{ icon }}
-            </v-icon>
-          </v-btn>
-        </v-card-text>
+        <v-card
+          flat
+          tile
+          class="indigo lighten-1 white--text text-center"
+        >
+          <v-card-text>
+            <v-btn
+              v-for="icon in icons"
+              :key="icon"
+              class="mx-4 white--text"
+              icon
+            >
+              <v-icon size="24px">
+                {{ icon }}
+              </v-icon>
+            </v-btn>
+          </v-card-text>
 
-        <v-card-text class="white--text pt-0">
-          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc.
-        </v-card-text>
+          <v-card-text class="white--text pt-0">
+            Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc.
+          </v-card-text>
 
-        <v-divider></v-divider>
+          <v-divider></v-divider>
 
-        <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>Web3_Assemble</strong>
-        </v-card-text>
-      </v-card>
+          <v-card-text class="white--text">
+            {{ new Date().getFullYear() }} — <strong>Web3_Assemble</strong>
+          </v-card-text>
+        </v-card>
+      </v-col>
     </v-footer>
   </v-app>
 </template>
@@ -137,19 +143,29 @@ export default {
         'mdi-twitter',
         'mdi-linkedin',
         'mdi-instagram',
-      ]
+      ],
+      headlines: []
     }
   },
-  async asyncData ({ $axios }) {
-    try {
-      const topHeadlines = await $axios.$get('/api/v1/news')
-      console.log('headline', topHeadlines.articles)
-      return {
-        headlines: topHeadlines.articles
-      }
-    } catch (e) {
-      console.log(e.message)
-    }
+
+  mounted() {
+    this.fetchContents()
+  },
+
+  methods: {
+    fetchContents() {
+      this.$axios.$get('/api/v1/headlines')
+        .then((res) => {
+          this.headlines = res.data.headlines
+          console.log('headline', res.articles)
+          return {
+            headlines: res.articles
+          }
+        })
+        .catch((e) => {
+          console.log(e.message)
+        })
+    },
   }
 }
 </script>

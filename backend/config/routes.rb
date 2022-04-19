@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         end
       end
       get 'search', to: "searches#search"
-      resources :news, only: :index
+      resources :headlines
     end
   end
 end
